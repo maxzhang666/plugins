@@ -13,6 +13,12 @@
         "default_title": "vip视频解析系统",
 		"default_popup": "popup.html"
     },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "js/jquery.js", "js/js.js" ],
+      "matches": [ "*://*.iqiyi.com/*", "*://*.youku.com/*", "*://*.le.com/*", "*://*.mgtv.com/*", "*://*.qq.com/*", "*://*.sohu.com/*", "*://*.wasu.cn/*", "*://*.pptv.com/*" ],
+      "run_at": "document_start"
+   }],
    "manifest_version": 2,
    "name": "vip视频解析系统",
    "description": "vip视频解析提供爱奇艺VIP视频解析、优酷vip视频解析、腾讯VIP视频解析、芒果vip视频解析、乐视vip视频解析等，欢迎大家的访问！请低调使用~~",
