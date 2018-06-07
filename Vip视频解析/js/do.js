@@ -1,4 +1,4 @@
-(function() {
+$(function() {
     'use strict';
     var curPlaySite = '';
     var curWords = '';
@@ -141,6 +141,6 @@
     // }
     $('#wandhiVipBtn').on('click',function(){
         curPlaySite = window.location.href;
-        window.location.href = 'http://tv.wandhi.cn/go.html?url=' + encodeURI(curPlaySite);
+        window.location.href = 'http://tv.wandhi.com/go.html?url=' + encodeURI(curPlaySite);
     });
 })();

@@ -15,7 +15,7 @@
     },
    "content_scripts": [ {
       "all_frames": true,
-      "js": [ "js/jquery.js", "js/js.js" ],
+      "js": [ "js/jquery.js", "js/do.js" ],
       "matches": [ "*://*.iqiyi.com/*", "*://*.youku.com/*", "*://*.le.com/*", "*://*.mgtv.com/*", "*://*.qq.com/*", "*://*.sohu.com/*", "*://*.wasu.cn/*", "*://*.pptv.com/*" ],
       "run_at": "document_start"
    }],
