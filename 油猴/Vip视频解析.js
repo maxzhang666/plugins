@@ -44,7 +44,7 @@
     var reYJ = /1905/i;
     var rePP = /pptv/i;
     var reYYT = /yinyuetai/i;
-    var vipBtn = '<a id="wandhiVipBtn" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">vip解析</a>';
+    var vipBtn = '<a id="wandhiVipBtn" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">VIP解析</a>';
     var mSearchBtn = '<a id="wandhiSearchBtn" target="_blank" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">搜索电影</a>';
    
     // 爱奇艺
@@ -58,7 +58,7 @@
         }else{
         	curWords = iqiyiTitle.text();
         }
-        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords + '&p=1');
+        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords);
     }
     // 乐视
     if(reLS.test(videoSite)){
@@ -72,7 +72,7 @@
         }else{
         	curWords = lsTitle.text();
         }
-        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords + '&p=2');
+        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords);
     }
     // 腾讯
     if(reTX.test(videoSite)){
@@ -88,7 +88,7 @@
         if(curWords === ''){
         	curWords = $('.player_title').text();
         }
-        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords + '&p=1');
+        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords );
     }
     // 土豆
     if(reTD.test(videoSite)){
@@ -104,7 +104,7 @@
         $('#wandhiVipBtn').css({'font-size':'22px','display':'inline-block','height':'40px','line-height':'40px','margin':'0 5px'});
         $('#wandhiSearchBtn').css({'font-size':'22px','display':'inline-block','height':'40px','line-height':'40px','margin':'0 5px'});
     	curWords = mgTitle.text();
-        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords + '&p=1');
+        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords );
     }
     // 搜狐
     if(reSH.test(videoSite)){
@@ -114,7 +114,7 @@
         $('#wandhiVipBtn').css({'font-weight':'bold','font-size':'16px','display':'inline-block','height':'36px','line-height':'36px','margin':'0 5px'});
         $('#wandhiSearchBtn').css({'font-weight':'bold','font-size':'16px','display':'inline-block','height':'36px','line-height':'36px','margin':'0 5px'});
         curWords = shTitle.find('h2').text();
-        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords + '&p=1');
+        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords);
     }
     // acfun
     if(reAF.test(videoSite)){
@@ -136,7 +136,7 @@
         $('#wandhiVipBtn').css({'font-weight':'bold','font-size':'16px','display':'inline-block','height':'36px','line-height':'36px','margin':'0 5px'});
         $('#wandhiSearchBtn').css({'font-weight':'bold','font-size':'16px','display':'inline-block','height':'36px','line-height':'36px','margin':'0 5px'});
         curWords = pptvTitle.text();
-        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords + '&p=1');
+        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords );
     }
 	 if(reYk.test(videoSite)){
         var youkuTitle = $('#subtitle');
@@ -149,7 +149,7 @@
 	        }else{
 	        	curWords = $('.title').attr('title');
 	        }
-	        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords + '&p=1');
+	        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords);
         }else{
         	$('.title').after(mSearchBtn).after(vipBtn);
         	$('#wandhiVipBtn').css({'font-size':'17px','display':'inline-block','height':'22px','line-height':'22px','margin':'0 5px','vertical-align':'bottom'});
@@ -159,7 +159,7 @@
 	        }else{
 	        	curWords = $('.title').attr('title');
 	        }
-	        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords + '&p=1');
+	        $('#wandhiSearchBtn').attr('href','http://tv.wandhi.com/search/' + curWords);
         }
     }
     // 音悦台
