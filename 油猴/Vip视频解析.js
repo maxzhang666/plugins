@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         一键VIP视频解析、去广告（全网）
 // @namespace    http://www.wandhi.com/
-// @version      1.8
+// @version      1.9
 // @description  在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮，在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -28,6 +28,7 @@
 // @match        *://yun.baidu.com/s/*
 // @match        *://pan.baidu.com/share/link*
 // @match        *://yun.baidu.com/share/link*
+// @match        http*://item.taobao.com/*
 // @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
 // @require      https://cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js
 // @grant        GM_setClipboard
@@ -52,100 +53,221 @@
     var reYJ = /1905/i;
     var rePP = /pptv/i;
     var reYYT = /yinyuetai/i;
+    var reTaoBao = /taobao/i;
     var GoBtn = '<a id="wandhiVipBtn" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">vip解析</a>';
     var SearchBtn = '<a id="wandhiSearchBtn" target="_blank" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">搜索电影</a>';
-
-    if (reAqy.test(VideoUrl)) {
-        var iqiyiTitle = $('#widget-videotitle');
-        iqiyiTitle.parent('.mod-play-tit').append(GoBtn).append(SearchBtn);
-        $('#wandhiVipBtn').css({ 'font-size': '17px', 'display': 'inline-block', 'height': '24px', 'line-height': '24px', 'margin': '0 5px' });
-        $('#wandhiSearchBtn').css({ 'font-size': '17px', 'display': 'inline-block', 'height': '24px', 'line-height': '24px', 'margin': '0 5px' });
-        if ($('#drama-series-title').length !== 0) {
-            currentKey = $('#drama-series-title').find('a').text();
-        } else {
-            currentKey = iqiyiTitle.text();
-        }
-
-    }
-    else if (reLS.test(VideoUrl)) {
-        var lsTitle = $('.j-video-name');
-        lsTitle.after(SearchBtn).after(GoBtn);
-        lsTitle.css('float', 'left');
-        $('#wandhiVipBtn').css({ 'font-size': '16px', 'display': 'inline-block', 'height': '20px', 'line-height': '20px', 'margin': '0 5px' });
-        $('#wandhiSearchBtn').css({ 'font-size': '16px', 'display': 'inline-block', 'height': '20px', 'line-height': '20px', 'margin': '0 5px' });
-        if ($('.Info').find('.title').find('h3').length !== 0) {
-            currentKey = $('.Info').find('.title').find('h3').text();
-        } else {
-            currentKey = lsTitle.text();
-        }
-    }
-    else if (reTX.test(VideoUrl)) {
-        var qqTitle = $('.mod_intro').find('.video_title');
-        qqTitle.eq(0).after(SearchBtn).after(GoBtn);
-        $('#wandhiVipBtn').css({ 'font-size': '24px', 'display': 'inline-block', 'height': '36px', 'line-height': '36px', 'margin': '0 5px' });
-        $('#wandhiSearchBtn').css({ 'font-size': '24px', 'display': 'inline-block', 'height': '36px', 'line-height': '36px', 'margin': '0 5px' });
-        if ($('.player_title').length !== 0 && $('.player_title').find('a').length === 0) {
-            currentKey = $('.player_title').text();
-        } else {
-            currentKey = $('._base_title').text();
-        }
-        if (currentKey === '') {
-            currentKey = $('.player_title').text();
-        }
-    }
-    else if (reTD.test(VideoUrl)) {
-        var tdTitle = $('#videoKw');
-        tdTitle.parent('.fix').append(GoBtn);
-        $('#wandhiVipBtn').css({ 'font-size': '18px', 'display': 'inline-block', 'height': '22px', 'line-height': '22px', 'margin': '14px 5px 0' });
-    }
-    else if (reMG.test(VideoUrl)) {
-        var mgTitle = $('.v-panel-title');
-        mgTitle.after(SearchBtn).after(GoBtn);
-        mgTitle.css({ 'float': 'left', 'margin-right': '0' });
-        $('#wandhiVipBtn').css({ 'font-size': '22px', 'display': 'inline-block', 'height': '40px', 'line-height': '40px', 'margin': '0 5px' });
-        $('#wandhiSearchBtn').css({ 'font-size': '22px', 'display': 'inline-block', 'height': '40px', 'line-height': '40px', 'margin': '0 5px' });
-        currentKey = mgTitle.text();
-
-    }
-    else if (reSH.test(VideoUrl)) {
-        var shTitle = $('.player-top-info-name');
-        shTitle.append(GoBtn).append(SearchBtn);
-        shTitle.find('h2').css({ 'float': 'left' });
-        $('#wandhiVipBtn').css({ 'font-weight': 'bold', 'font-size': '16px', 'display': 'inline-block', 'height': '36px', 'line-height': '36px', 'margin': '0 5px' });
-        $('#wandhiSearchBtn').css({ 'font-weight': 'bold', 'font-size': '16px', 'display': 'inline-block', 'height': '36px', 'line-height': '36px', 'margin': '0 5px' });
-        currentKey = shTitle.find('h2').text();
-
-    }
-    else if (rePP.test(VideoUrl)) {
-        var pptvTitle = $('.title_video').find('h3');
-        pptvTitle.after(SearchBtn).after(GoBtn);
-        $('#wandhiVipBtn').css({ 'font-weight': 'bold', 'font-size': '16px', 'display': 'inline-block', 'height': '36px', 'line-height': '36px', 'margin': '0 5px' });
-        $('#wandhiSearchBtn').css({ 'font-weight': 'bold', 'font-size': '16px', 'display': 'inline-block', 'height': '36px', 'line-height': '36px', 'margin': '0 5px' });
-        currentKey = pptvTitle.text();
-    }
-    else if (reYk.test(VideoUrl)) {
-        var youkuTitle = $('#subtitle');
-        if (youkuTitle.length !== 0) {
-            youkuTitle.after(SearchBtn).after(GoBtn);
-            $('#wandhiVipBtn').css({ 'font-size': '17px', 'display': 'inline-block', 'height': '22px', 'line-height': '22px', 'margin': '0 5px', 'vertical-align': 'bottom' });
-            $('#wandhiSearchBtn').css({ 'font-size': '17px', 'display': 'inline-block', 'height': '22px', 'line-height': '22px', 'margin': '0 5px', 'vertical-align': 'bottom' });
-            if ($('.tvinfo').length !== 0) {
-                currentKey = $('.tvinfo').find('h2').eq(0).find('a').text();
+    if (reAqy.test(VideoUrl) || reLS.test(VideoUrl) || reTX.test(VideoUrl) || reTD.test(VideoUrl) || reMG.test(VideoUrl) || reSH.test(VideoUrl) || rePP.test(VideoUrl) || reYk.test(VideoUrl) || reTX) {
+        if (reAqy.test(VideoUrl)) {
+            var iqiyiTitle = $('#widget-videotitle');
+            iqiyiTitle.parent('.mod-play-tit').append(GoBtn).append(SearchBtn);
+            $('#wandhiVipBtn').css({
+                'font-size': '17px',
+                'display': 'inline-block',
+                'height': '24px',
+                'line-height': '24px',
+                'margin': '0 5px'
+            });
+            $('#wandhiSearchBtn').css({
+                'font-size': '17px',
+                'display': 'inline-block',
+                'height': '24px',
+                'line-height': '24px',
+                'margin': '0 5px'
+            });
+            if ($('#drama-series-title').length !== 0) {
+                currentKey = $('#drama-series-title').find('a').text();
             } else {
-                currentKey = $('.title').attr('title');
+                currentKey = iqiyiTitle.text();
             }
-        } else {
-            $('.title').after(SearchBtn).after(GoBtn);
-            $('#wandhiVipBtn').css({ 'font-size': '17px', 'display': 'inline-block', 'height': '22px', 'line-height': '22px', 'margin': '0 5px', 'vertical-align': 'bottom' });
-            $('#wandhiSearchBtn').css({ 'font-size': '17px', 'display': 'inline-block', 'height': '22px', 'line-height': '22px', 'margin': '0 5px', 'vertical-align': 'bottom' });
-            if ($('.tvinfo').length !== 0) {
-                currentKey = $('.tvinfo').find('h3').eq(0).text();
+
+        } else if (reLS.test(VideoUrl)) {
+            var lsTitle = $('.j-video-name');
+            lsTitle.after(SearchBtn).after(GoBtn);
+            lsTitle.css('float', 'left');
+            $('#wandhiVipBtn').css({
+                'font-size': '16px',
+                'display': 'inline-block',
+                'height': '20px',
+                'line-height': '20px',
+                'margin': '0 5px'
+            });
+            $('#wandhiSearchBtn').css({
+                'font-size': '16px',
+                'display': 'inline-block',
+                'height': '20px',
+                'line-height': '20px',
+                'margin': '0 5px'
+            });
+            if ($('.Info').find('.title').find('h3').length !== 0) {
+                currentKey = $('.Info').find('.title').find('h3').text();
             } else {
-                currentKey = $('.title').attr('title');
+                currentKey = lsTitle.text();
+            }
+        } else if (reTX.test(VideoUrl)) {
+            var qqTitle = $('.mod_intro').find('.video_title');
+            qqTitle.eq(0).after(SearchBtn).after(GoBtn);
+            $('#wandhiVipBtn').css({
+                'font-size': '24px',
+                'display': 'inline-block',
+                'height': '36px',
+                'line-height': '36px',
+                'margin': '0 5px'
+            });
+            $('#wandhiSearchBtn').css({
+                'font-size': '24px',
+                'display': 'inline-block',
+                'height': '36px',
+                'line-height': '36px',
+                'margin': '0 5px'
+            });
+            if ($('.player_title').length !== 0 && $('.player_title').find('a').length === 0) {
+                currentKey = $('.player_title').text();
+            } else {
+                currentKey = $('._base_title').text();
+            }
+            if (currentKey === '') {
+                currentKey = $('.player_title').text();
+            }
+        } else if (reTD.test(VideoUrl)) {
+            var tdTitle = $('#videoKw');
+            tdTitle.parent('.fix').append(GoBtn);
+            $('#wandhiVipBtn').css({
+                'font-size': '18px',
+                'display': 'inline-block',
+                'height': '22px',
+                'line-height': '22px',
+                'margin': '14px 5px 0'
+            });
+        } else if (reMG.test(VideoUrl)) {
+            var mgTitle = $('.v-panel-title');
+            mgTitle.after(SearchBtn).after(GoBtn);
+            mgTitle.css({
+                'float': 'left',
+                'margin-right': '0'
+            });
+            $('#wandhiVipBtn').css({
+                'font-size': '22px',
+                'display': 'inline-block',
+                'height': '40px',
+                'line-height': '40px',
+                'margin': '0 5px'
+            });
+            $('#wandhiSearchBtn').css({
+                'font-size': '22px',
+                'display': 'inline-block',
+                'height': '40px',
+                'line-height': '40px',
+                'margin': '0 5px'
+            });
+            currentKey = mgTitle.text();
+
+        } else if (reSH.test(VideoUrl)) {
+            var shTitle = $('.player-top-info-name');
+            shTitle.append(GoBtn).append(SearchBtn);
+            shTitle.find('h2').css({
+                'float': 'left'
+            });
+            $('#wandhiVipBtn').css({
+                'font-weight': 'bold',
+                'font-size': '16px',
+                'display': 'inline-block',
+                'height': '36px',
+                'line-height': '36px',
+                'margin': '0 5px'
+            });
+            $('#wandhiSearchBtn').css({
+                'font-weight': 'bold',
+                'font-size': '16px',
+                'display': 'inline-block',
+                'height': '36px',
+                'line-height': '36px',
+                'margin': '0 5px'
+            });
+            currentKey = shTitle.find('h2').text();
+
+        } else if (rePP.test(VideoUrl)) {
+            var pptvTitle = $('.title_video').find('h3');
+            pptvTitle.after(SearchBtn).after(GoBtn);
+            $('#wandhiVipBtn').css({
+                'font-weight': 'bold',
+                'font-size': '16px',
+                'display': 'inline-block',
+                'height': '36px',
+                'line-height': '36px',
+                'margin': '0 5px'
+            });
+            $('#wandhiSearchBtn').css({
+                'font-weight': 'bold',
+                'font-size': '16px',
+                'display': 'inline-block',
+                'height': '36px',
+                'line-height': '36px',
+                'margin': '0 5px'
+            });
+            currentKey = pptvTitle.text();
+        } else if (reYk.test(VideoUrl)) {
+            var youkuTitle = $('#subtitle');
+            if (youkuTitle.length !== 0) {
+                youkuTitle.after(SearchBtn).after(GoBtn);
+                $('#wandhiVipBtn').css({
+                    'font-size': '17px',
+                    'display': 'inline-block',
+                    'height': '22px',
+                    'line-height': '22px',
+                    'margin': '0 5px',
+                    'vertical-align': 'bottom'
+                });
+                $('#wandhiSearchBtn').css({
+                    'font-size': '17px',
+                    'display': 'inline-block',
+                    'height': '22px',
+                    'line-height': '22px',
+                    'margin': '0 5px',
+                    'vertical-align': 'bottom'
+                });
+                if ($('.tvinfo').length !== 0) {
+                    currentKey = $('.tvinfo').find('h2').eq(0).find('a').text();
+                } else {
+                    currentKey = $('.title').attr('title');
+                }
+            } else {
+                $('.title').after(SearchBtn).after(GoBtn);
+                $('#wandhiVipBtn').css({
+                    'font-size': '17px',
+                    'display': 'inline-block',
+                    'height': '22px',
+                    'line-height': '22px',
+                    'margin': '0 5px',
+                    'vertical-align': 'bottom'
+                });
+                $('#wandhiSearchBtn').css({
+                    'font-size': '17px',
+                    'display': 'inline-block',
+                    'height': '22px',
+                    'line-height': '22px',
+                    'margin': '0 5px',
+                    'vertical-align': 'bottom'
+                });
+                if ($('.tvinfo').length !== 0) {
+                    currentKey = $('.tvinfo').find('h3').eq(0).text();
+                } else {
+                    currentKey = $('.title').attr('title');
+                }
             }
         }
+
+        AddUrl();
+    } else if (reTaoBao.test(VideoUrl)) {
+        var name = '';
+        var html = '';
+        if (reTaoBao.test(VideoUrl)) {
+            name = $.trim($('.tb-main-title').text());
+            html = '<div class="tb-btn-add" style="padding-top:10px;"><a href="http://www.huizhek.com/index.php?r=l&kw='+ encodeURI(name) + '">领取优惠券</a></div>';
+            $('.tb-action').append(html);
+        } 
     }
-    AddUrl();
+
+
     function AddUrl() {
         $('#wandhiSearchBtn').attr('href', 'http://tv.wandhi.com/search/' + currentKey);
         $('#wandhiVipBtn').on('click', function () {
@@ -153,5 +275,4 @@
             window.location.href = 'http://tv.wandhi.com/go.html?url=' + currentUrl;
         });
     }
-}
-)();
+})();
