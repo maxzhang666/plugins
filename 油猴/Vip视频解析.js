@@ -54,7 +54,7 @@
     var rePP = /pptv/i;
     var reYYT = /yinyuetai/i;
     var reTaoBao = /taobao/i;
-    var reTmall = /taobao/i;
+    var reTmall = /tmall/i;
     var GoBtn = '<a id="wandhiVipBtn" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">vip解析</a>';
     var SearchBtn = '<a id="wandhiSearchBtn" target="_blank" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">搜索电影</a>';
     var name = '';
@@ -265,16 +265,13 @@
 
         AddUrl();
     } else if (reTaoBao.test(VideoUrl)) {
-        if (reTaoBao.test(VideoUrl)) {
             name = $.trim($('.tb-main-title').text());
             html = '<div class="tb-btn-add" style="padding-top:10px;"><a href="http://www.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券</a></div>';
             $('.tb-action').append(html);
-        }
     } else if (reTmall.test(VideoUrl)) {
         name = $.trim($('meta[name=keywords]').attr('content'));
         html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a href="http://www.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券</a></div>';
         $('.tb-action').append(html);
-
     }
 
 
