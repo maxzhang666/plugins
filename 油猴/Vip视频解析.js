@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         一键VIP视频解析、去广告（全网）
 // @namespace    http://www.wandhi.com/
-// @version      2.0
+// @version      2.1
 // @description  在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮，在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -29,6 +29,7 @@
 // @match        *://pan.baidu.com/share/link*
 // @match        *://yun.baidu.com/share/link*
 // @match        http*://item.taobao.com/*
+// @match        http*://detail.tmall.com/*
 // @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
 // @require      https://cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js
 // @grant        GM_setClipboard
