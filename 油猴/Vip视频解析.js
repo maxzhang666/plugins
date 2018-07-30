@@ -265,6 +265,7 @@
         }
 
         AddUrl();
+        //http://www1.huizhek.com/index.php?r=searchlist&kwd=567
     } else if (reTaoBao.test(VideoUrl)) {
             name = $.trim($('.tb-main-title').text());
             html = '<div class="tb-btn-add" style="padding-top:10px;"><a href="http://www.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券</a></div>';
