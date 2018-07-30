@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         一键VIP视频解析、去广告（全网）
 // @namespace    http://www.wandhi.com/
-// @version      2.1
+// @version      2.2
 // @description  在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮，在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -265,14 +265,16 @@
         }
 
         AddUrl();
-        //http://www1.huizhek.com/index.php?r=searchlist&kwd=567
+        //http://www1.huizhek.com/index.php?r=searchlist&kwd=123&type=0#
     } else if (reTaoBao.test(VideoUrl)) {
-            name = $.trim($('.tb-main-title').text());
-            html = '<div class="tb-btn-add" style="padding-top:10px;"><a href="http://www.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券</a></div>';
-            $('.tb-action').append(html);
+        name = $.trim($('.tb-main-title').text());
+        html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
+        html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
+        $('.tb-action').append(html);
     } else if (reTmall.test(VideoUrl)) {
         name = $.trim($('meta[name=keywords]').attr('content'));
-        html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a href="http://www.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券</a></div>';
+        html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券领取优惠券(通道一)</a></div>';
+        html += '<div class="tb-btn-basket tb-btn-sku"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
         $('.tb-action').append(html);
     }
 
