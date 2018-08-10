@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）2018.08.07可用
+// @name         一键VIP视频解析、去广告（全网）
 // @namespace    http://www.wandhi.com/
-// @version      2.4
+// @version      2.5
 // @description  在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮，在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -44,7 +44,7 @@
     var VideoUrl = window.location.href;
     var reYk = /youku/i;
     var reAqy = /iqiyi/i;
-    var reLS = /le/i;
+    var reLS = /le.com/i;
     var reTX = /qq/i;
     var reTD = /tudou/i;
     var reMG = /mgtv/i;
@@ -59,7 +59,7 @@
     var GoBtn = '<a id="wandhiVipBtn" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">vip解析</a>';
     var SearchBtn = '<a id="wandhiSearchBtn" target="_blank" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">搜索电影</a>';
     var name = '';
-    var html = '';
+    var html = '';    
     if (reAqy.test(VideoUrl) || reLS.test(VideoUrl) || reTX.test(VideoUrl) || reTD.test(VideoUrl) || reMG.test(VideoUrl) || reSH.test(VideoUrl) || rePP.test(VideoUrl) || reYk.test(VideoUrl)) {
         if (reAqy.test(VideoUrl)) {
             var iqiyiTitle = $('#widget-videotitle');
@@ -90,7 +90,7 @@
 
         } else if (reLS.test(VideoUrl)) {
             var lsTitle = $('.j-video-name');
-            lsTitle.after(SearchBtn).after(GoBtn);
+            lsTitle.append(SearchBtn).append(GoBtn);
             lsTitle.css('float', 'left');
             $('#wandhiVipBtn').css({
                 'font-size': '16px',
@@ -113,7 +113,7 @@
             }
         } else if (reTX.test(VideoUrl)) {
             var qqTitle = $('.mod_intro').find('.video_title');
-            qqTitle.eq(0).after(SearchBtn).after(GoBtn);
+            qqTitle.eq(0).append(SearchBtn).append(GoBtn);
             $('#wandhiVipBtn').css({
                 'font-size': '24px',
                 'display': 'inline-block',
@@ -148,7 +148,7 @@
             });
         } else if (reMG.test(VideoUrl)) {
             var mgTitle = $('.v-panel-title');
-            mgTitle.after(SearchBtn).after(GoBtn);
+            mgTitle.append(SearchBtn).append(GoBtn);
             mgTitle.css({
                 'float': 'left',
                 'margin-right': '0'
@@ -195,7 +195,7 @@
 
         } else if (rePP.test(VideoUrl)) {
             var pptvTitle = $('.title_video').find('h3');
-            pptvTitle.after(SearchBtn).after(GoBtn);
+            pptvTitle.append(SearchBtn).append(GoBtn);
             $('#wandhiVipBtn').css({
                 'font-weight': 'bold',
                 'font-size': '16px',
@@ -216,7 +216,7 @@
         } else if (reYk.test(VideoUrl)) {
             var youkuTitle = $('#subtitle');
             if (youkuTitle.length !== 0) {
-                youkuTitle.after(SearchBtn).after(GoBtn);
+                youkuTitle.append(SearchBtn).append(GoBtn);
                 $('#wandhiVipBtn').css({
                     'font-size': '17px',
                     'display': 'inline-block',
@@ -239,7 +239,7 @@
                     currentKey = $('.title').attr('title');
                 }
             } else {
-                $('.title').after(SearchBtn).after(GoBtn);
+                $('.title').append(SearchBtn).append(GoBtn);
                 $('#wandhiVipBtn').css({
                     'font-size': '17px',
                     'display': 'inline-block',
@@ -264,18 +264,18 @@
             }
         }
 
-        AddUrl();
+        AddUrl();    
         //http://www1.huizhek.com/index.php?r=searchlist&kwd=123&type=0#
     } else if (reTaoBao.test(VideoUrl)) {
-        name = $.trim($('.tb-main-title').text());
-        html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
-        html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
-        $('.tb-action').append(html);
+            name = $.trim($('.tb-main-title').text());
+            html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
+            html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
+              $('.tb-action').append(html);
     } else if (reTmall.test(VideoUrl)) {
         name = $.trim($('meta[name=keywords]').attr('content'));
         html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券领取优惠券(通道一)</a></div>';
         html += '<div class="tb-btn-basket tb-btn-sku"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
-        $('.tb-action').append(html);
+      $('.tb-action').append(html);
     }
 
 
