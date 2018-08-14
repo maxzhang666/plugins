@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网） 2018-08-15 可用
+// @name         一键VIP视频解析、去广告（全网） 2018-08-13 可用
 // @namespace    http://www.wandhi.com/
 // @version      2.6
 // @description  在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮，在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
@@ -36,7 +36,6 @@
 // @run-at       document-end
 // @grant        unsafeWindow
 // ==/UserScript==
-
 (function () {
     'use strict';
     var currentUrl = '';
@@ -58,8 +57,10 @@
     var reTmall = /tmall/i;
     var GoBtn = '<a id="wandhiVipBtn" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">vip解析</a>';
     var SearchBtn = '<a id="wandhiSearchBtn" target="_blank" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">搜索电影</a>';
+    var historyBTN_TaoBao = '<li><div id="J_history"><span class="tb-property-type">历史</span><a href="javascript:;" title="历史价格" class="J_LinkHistory" >历史价格</a></div></li>';
+    var historyBTN_Tmall = '<dl><span class="tb-metatit">历史</span><a href="javascript:;" title="历史价格" class="J_LinkHistory" >历史价格</a></dl>';
     var name = '';
-    var html = '';    
+    var html = '';
     if (reAqy.test(VideoUrl) || reLS.test(VideoUrl) || reTX.test(VideoUrl) || reTD.test(VideoUrl) || reMG.test(VideoUrl) || reSH.test(VideoUrl) || rePP.test(VideoUrl) || reYk.test(VideoUrl)) {
         if (reAqy.test(VideoUrl)) {
             var iqiyiTitle = $('#widget-videotitle');
@@ -87,7 +88,6 @@
             } else {
                 currentKey = iqiyiTitle.text();
             }
-
         } else if (reLS.test(VideoUrl)) {
             var lsTitle = $('.j-video-name');
             lsTitle.append(SearchBtn).append(GoBtn);
@@ -168,7 +168,6 @@
                 'margin': '0 5px'
             });
             currentKey = mgTitle.text();
-
         } else if (reSH.test(VideoUrl)) {
             var shTitle = $('.player-top-info-name');
             shTitle.append(GoBtn).append(SearchBtn);
@@ -192,7 +191,6 @@
                 'margin': '0 5px'
             });
             currentKey = shTitle.find('h2').text();
-
         } else if (rePP.test(VideoUrl)) {
             var pptvTitle = $('.title_video').find('h3');
             pptvTitle.append(SearchBtn).append(GoBtn);
@@ -263,21 +261,40 @@
                 }
             }
         }
-
-        AddUrl();    
-        //http://www1.huizhek.com/index.php?r=searchlist&kwd=123&type=0#
-    } else if (reTaoBao.test(VideoUrl)) {
+        AddUrl();
+    }
+    else if (reTaoBao.test(VideoUrl) || reTmall.test(VideoUrl)) {
+        if (reTmall.test(VideoUrl)) {
+            name = $.trim($('meta[name=keywords]').attr('content'));
+            html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
+            html += '<div class="tb-btn-basket tb-btn-sku"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
+            $('.tb-action').append(html);
+            $('.tb-meta').prepend(historyBTN_Tmall);
+        } else {
             name = $.trim($('.tb-main-title').text());
             html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
             html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
-              $('.tb-action').append(html);
-    } else if (reTmall.test(VideoUrl)) {
-        name = $.trim($('meta[name=keywords]').attr('content'));
-        html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
-        html += '<div class="tb-btn-basket tb-btn-sku"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
-      $('.tb-action').append(html);
+            $('.tb-action').append(html);
+            $('.tb-meta').append(historyBTN_TaoBao);
+        }
+        $(".J_LinkHistory").css({
+            "text-align": "center",
+            "font-family": "Hiragino Sans GB,microsoft yahei,sans-serif",
+            "font-size": "16px",
+            "border-width": "1px",
+            "border-style": "solid",
+            "border-radius": "6px",
+            "margin-left": "10px",
+            "color": "#FFF",
+            "border-color": "#F40",
+            "background": "#F40",
+            "text-decoration":"none"
+        });
+        $(".J_LinkHistory").on('click', function () {
+            var url = "http://yhxxc.wandhi.com/Url/" + encodeURIComponent(location.href);
+            window.location.href=url;
+        });
     }
-
 
     function AddUrl() {
         $('#wandhiSearchBtn').attr('href', 'http://tv.wandhi.com/search/' + currentKey);
