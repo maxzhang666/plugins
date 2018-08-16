@@ -1,9 +1,10 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网） 2018-08-15 可用
+// @name         一键VIP视频解析、去广告（全网） 2018-08-17 可用
 // @namespace    http://www.wandhi.com/
-// @version      2.7
+// @version      2.7.1
 // @description  在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮，在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
 // @author       Wandhi
+// @supportURL   https://www.wandhi.com/post-918.html
 // @match        *://v.youku.com/v_show/*
 // @match        *://*.iqiyi.com/v_*
 // @match        *://*.iqiyi.com/dianying/*
@@ -34,7 +35,7 @@
 // @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
 // @require      https://cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js
 // @grant        GM_setClipboard
-// @run-at       document-end
+// @run-at       document-idle  //document-end
 // @grant        unsafeWindow
 // ==/UserScript==
 
@@ -65,6 +66,7 @@
     if (reAqy.test(VideoUrl) || reLS.test(VideoUrl) || reTX.test(VideoUrl) || reTD.test(VideoUrl) || reMG.test(VideoUrl) || reSH.test(VideoUrl) || rePP.test(VideoUrl) || reYk.test(VideoUrl)) {
         if (reAqy.test(VideoUrl)) {
             var iqiyiTitle = $('#widget-videotitle');
+            if(iqiyiTitle==null||iqiyiTitle.length==0){iqiyiTitle=$(".qy-player-title ");}
             if (iqiyiTitle.parent('.mod-play-tit') > 0) {
                 iqiyiTitle.parent('.mod-play-tit').append(GoBtn).append(SearchBtn);
             } else {
@@ -75,14 +77,14 @@
                 'display': 'inline-block',
                 'height': '24px',
                 'line-height': '24px',
-                'margin': '0 5px'
+                'margin': '5px 5px'
             });
             $('#wandhiSearchBtn').css({
                 'font-size': '17px',
                 'display': 'inline-block',
                 'height': '24px',
                 'line-height': '24px',
-                'margin': '0 5px'
+                'margin': '5px 5px'
             });
             if ($('#drama-series-title').length !== 0) {
                 currentKey = $('#drama-series-title').find('a').text();
@@ -265,9 +267,7 @@
                 }
             }
         }
-
-        AddUrl();    
-        //http://www1.huizhek.com/index.php?r=searchlist&kwd=123&type=0#
+        AddUrl();
     } else if (reTaoBao.test(VideoUrl)) {
             name = $.trim($('.tb-main-title').text());
             html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
@@ -287,7 +287,12 @@
 
     function AddUrl() {
         $('#wandhiSearchBtn').attr('href', 'http://tv.wandhi.com/search/' + currentKey);
+        $('#wandhiVipBtn').attr('href', 'javascript:;');
         $('#wandhiVipBtn').on('click', function () {
+            currentUrl = window.location.href;
+            window.location.href = 'http://tv.wandhi.com/go.html?url=' + currentUrl;
+        });
+        $('body').on('click','#wandhiVipBtn',function () {
             currentUrl = window.location.href;
             window.location.href = 'http://tv.wandhi.com/go.html?url=' + currentUrl;
         });
