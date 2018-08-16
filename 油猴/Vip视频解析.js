@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         一键VIP视频解析、去广告（全网） 2018-08-15 可用
 // @namespace    http://www.wandhi.com/
-// @version      2.6
+// @version      2.7
 // @description  在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮，在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -30,6 +30,7 @@
 // @match        *://yun.baidu.com/share/link*
 // @match        http*://item.taobao.com/*
 // @match        http*://detail.tmall.com/*
+// @match        http*://item.jd.com/*
 // @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
 // @require      https://cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js
 // @grant        GM_setClipboard
@@ -56,6 +57,7 @@
     var reYYT = /yinyuetai/i;
     var reTaoBao = /taobao/i;
     var reTmall = /tmall/i;
+    var reJd=/jd/i;
     var GoBtn = '<a id="wandhiVipBtn" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">vip解析</a>';
     var SearchBtn = '<a id="wandhiSearchBtn" target="_blank" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">搜索电影</a>';
     var name = '';
@@ -276,6 +278,10 @@
         html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
         html += '<div class="tb-btn-basket tb-btn-sku"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
       $('.tb-action').append(html);
+    } else if(reJd.test(VideoUrl)){
+        var keywords=$(".sku-name").text().trim();
+        $("#choose-btns").prepend('<a href="javascript:;" class="btn-special1 btn-lg btn-yhj"><span class="">领券购买</span></a>');
+        $(".btn-yhj").on('click',function(){window.open("http://jd.huizhek.com/?ah=total&kw="+encodeURIComponent( keywords));});
     }
 
 
