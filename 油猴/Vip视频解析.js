@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         一键VIP视频解析、去广告（全网） 2018-08-17 可用
 // @namespace    http://www.wandhi.com/
-// @version      2.7.1
+// @version      2.8
 // @description  在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮，在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -33,6 +33,7 @@
 // @match        http*://item.jd.com/*
 // @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
 // @require      https://cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js
+// @require      http://tv.wandhi.com/static/style/asidenav.js
 // @grant        GM_setClipboard
 // @run-at       document-end
 // @grant        unsafeWindow
@@ -40,9 +41,7 @@
 
 (function () {
     'use strict';
-    var currentUrl = '';
-    var currentKey = '';
-    var VideoUrl = window.location.href;
+    var currentUrl = window.location.href;
     var reYk = /youku/i;
     var reAqy = /iqiyi/i;
     var reLS = /le.com/i;
@@ -57,243 +56,53 @@
     var reYYT = /yinyuetai/i;
     var reTaoBao = /taobao/i;
     var reTmall = /tmall/i;
-    var reJd=/jd/i;
-    var GoBtn = '<a id="wandhiVipBtn" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">vip解析</a>';
-    var SearchBtn = '<a id="wandhiSearchBtn" target="_blank" style="cursor:pointer;text-decoration:none;color:red;padding:0 5px;border:1px solid red;">搜索电影</a>';
-    var name = '';
-    var html = '';    
-    if (reAqy.test(VideoUrl) || reLS.test(VideoUrl) || reTX.test(VideoUrl) || reTD.test(VideoUrl) || reMG.test(VideoUrl) || reSH.test(VideoUrl) || rePP.test(VideoUrl) || reYk.test(VideoUrl)) {
-        if (reAqy.test(VideoUrl)) {
-            var iqiyiTitle = $('#widget-videotitle');
-            if(iqiyiTitle==null||iqiyiTitle.length==0){iqiyiTitle=$(".qy-player-title ");}
-            if (iqiyiTitle.parent('.mod-play-tit') > 0) {
-                iqiyiTitle.parent('.mod-play-tit').append(GoBtn).append(SearchBtn);
-            } else {
-                iqiyiTitle.append(GoBtn).append(SearchBtn);
-            }
-            $('#wandhiVipBtn').css({
-                'font-size': '17px',
-                'display': 'inline-block',
-                'height': '24px',
-                'line-height': '24px',
-                'margin': '5px 5px'
-            });
-            $('#wandhiSearchBtn').css({
-                'font-size': '17px',
-                'display': 'inline-block',
-                'height': '24px',
-                'line-height': '24px',
-                'margin': '5px 5px'
-            });
-            if ($('#drama-series-title').length !== 0) {
-                currentKey = $('#drama-series-title').find('a').text();
-            } else {
-                currentKey = iqiyiTitle.text();
-            }
+    var reJd = /jd/i;
 
-        } else if (reLS.test(VideoUrl)) {
-            var lsTitle = $('.j-video-name');
-            lsTitle.append(SearchBtn).append(GoBtn);
-            lsTitle.css('float', 'left');
-            $('#wandhiVipBtn').css({
-                'font-size': '16px',
-                'display': 'inline-block',
-                'height': '20px',
-                'line-height': '20px',
-                'margin': '0 5px'
-            });
-            $('#wandhiSearchBtn').css({
-                'font-size': '16px',
-                'display': 'inline-block',
-                'height': '20px',
-                'line-height': '20px',
-                'margin': '0 5px'
-            });
-            if ($('.Info').find('.title').find('h3').length !== 0) {
-                currentKey = $('.Info').find('.title').find('h3').text();
-            } else {
-                currentKey = lsTitle.text();
-            }
-        } else if (reTX.test(VideoUrl)) {
-            var qqTitle = $('.mod_intro').find('.video_title');
-            qqTitle.eq(0).append(SearchBtn).append(GoBtn);
-            $('#wandhiVipBtn').css({
-                'font-size': '24px',
-                'display': 'inline-block',
-                'height': '36px',
-                'line-height': '36px',
-                'margin': '0 5px'
-            });
-            $('#wandhiSearchBtn').css({
-                'font-size': '24px',
-                'display': 'inline-block',
-                'height': '36px',
-                'line-height': '36px',
-                'margin': '0 5px'
-            });
-            if ($('.player_title').length !== 0 && $('.player_title').find('a').length === 0) {
-                currentKey = $('.player_title').text();
-            } else {
-                currentKey = $('._base_title').text();
-            }
-            if (currentKey === '') {
-                currentKey = $('.player_title').text();
-            }
-        } else if (reTD.test(VideoUrl)) {
-            var tdTitle = $('#videoKw');
-            tdTitle.parent('.fix').append(GoBtn);
-            $('#wandhiVipBtn').css({
-                'font-size': '18px',
-                'display': 'inline-block',
-                'height': '22px',
-                'line-height': '22px',
-                'margin': '14px 5px 0'
-            });
-        } else if (reMG.test(VideoUrl)) {
-            var mgTitle = $('.v-panel-title');
-            mgTitle.append(SearchBtn).append(GoBtn);
-            mgTitle.css({
-                'float': 'left',
-                'margin-right': '0'
-            });
-            $('#wandhiVipBtn').css({
-                'font-size': '22px',
-                'display': 'inline-block',
-                'height': '40px',
-                'line-height': '40px',
-                'margin': '0 5px'
-            });
-            $('#wandhiSearchBtn').css({
-                'font-size': '22px',
-                'display': 'inline-block',
-                'height': '40px',
-                'line-height': '40px',
-                'margin': '0 5px'
-            });
-            currentKey = mgTitle.text();
-
-        } else if (reSH.test(VideoUrl)) {
-            var shTitle = $('.player-top-info-name');
-            shTitle.append(GoBtn).append(SearchBtn);
-            shTitle.find('h2').css({
-                'float': 'left'
-            });
-            $('#wandhiVipBtn').css({
-                'font-weight': 'bold',
-                'font-size': '16px',
-                'display': 'inline-block',
-                'height': '36px',
-                'line-height': '36px',
-                'margin': '0 5px'
-            });
-            $('#wandhiSearchBtn').css({
-                'font-weight': 'bold',
-                'font-size': '16px',
-                'display': 'inline-block',
-                'height': '36px',
-                'line-height': '36px',
-                'margin': '0 5px'
-            });
-            currentKey = shTitle.find('h2').text();
-
-        } else if (rePP.test(VideoUrl)) {
-            var pptvTitle = $('.title_video').find('h3');
-            pptvTitle.append(SearchBtn).append(GoBtn);
-            $('#wandhiVipBtn').css({
-                'font-weight': 'bold',
-                'font-size': '16px',
-                'display': 'inline-block',
-                'height': '36px',
-                'line-height': '36px',
-                'margin': '0 5px'
-            });
-            $('#wandhiSearchBtn').css({
-                'font-weight': 'bold',
-                'font-size': '16px',
-                'display': 'inline-block',
-                'height': '36px',
-                'line-height': '36px',
-                'margin': '0 5px'
-            });
-            currentKey = pptvTitle.text();
-        } else if (reYk.test(VideoUrl)) {
-            var youkuTitle = $('#subtitle');
-            if (youkuTitle.length !== 0) {
-                youkuTitle.append(SearchBtn).append(GoBtn);
-                $('#wandhiVipBtn').css({
-                    'font-size': '17px',
-                    'display': 'inline-block',
-                    'height': '22px',
-                    'line-height': '22px',
-                    'margin': '0 5px',
-                    'vertical-align': 'bottom'
-                });
-                $('#wandhiSearchBtn').css({
-                    'font-size': '17px',
-                    'display': 'inline-block',
-                    'height': '22px',
-                    'line-height': '22px',
-                    'margin': '0 5px',
-                    'vertical-align': 'bottom'
-                });
-                if ($('.tvinfo').length !== 0) {
-                    currentKey = $('.tvinfo').find('h2').eq(0).find('a').text();
-                } else {
-                    currentKey = $('.title').attr('title');
-                }
-            } else {
-                $('.title').append(SearchBtn).append(GoBtn);
-                $('#wandhiVipBtn').css({
-                    'font-size': '17px',
-                    'display': 'inline-block',
-                    'height': '22px',
-                    'line-height': '22px',
-                    'margin': '0 5px',
-                    'vertical-align': 'bottom'
-                });
-                $('#wandhiSearchBtn').css({
-                    'font-size': '17px',
-                    'display': 'inline-block',
-                    'height': '22px',
-                    'line-height': '22px',
-                    'margin': '0 5px',
-                    'vertical-align': 'bottom'
-                });
-                if ($('.tvinfo').length !== 0) {
-                    currentKey = $('.tvinfo').find('h3').eq(0).text();
-                } else {
-                    currentKey = $('.title').attr('title');
-                }
-            }
-        }
-        AddUrl();
+    if (reAqy.test(currentUrl) || reLS.test(currentUrl) || reTX.test(currentUrl) || reTD.test(currentUrl) || reMG.test(currentUrl) || reSH.test(currentUrl) || rePP.test(currentUrl) || reYk.test(currentUrl)) {
+        var sidenav = '<div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" class="aside-menu" title="\u6309\u4f4f\u62d6\u52a8">VIP</label><a href="javascript:void(0)" title="\u7535\u5f71\u641c\u7d22" data-cat="search" class="menu-item menu-line menu-first">\u7535\u5f71<br>\u641c\u7d22</a><a href="javascript:void(0)" title="\u89c6\u9891\u89e3\u6790" data-cat="process" class="menu-item menu-line menu-second">\u89c6\u9891<br>\u89e3\u6790</a><a href="javascript:void(0)" title="\u7edd\u4e16\u597d\u5238" data-cat="tb" class="menu-item menu-line menu-third">\u7edd\u4e16<br>\u597d\u5238</a><a href="javascript:void(0)" title="\u4eac\u4e1c\u597d\u5238" data-cat="jd" class="menu-item menu-line menu-fourth">\u4eac\u4e1c<br>\u597d\u5238</a></div>';
+        $("body").append(sidenav).append($('<link rel="stylesheet" href="//tv.wandhi.com/static/style/asidenav.css">'));
+        var ua = navigator.userAgent;
+        /Safari|iPhone/i.test(ua) && 0 == /chrome/i.test(ua) && $("#aside-nav").addClass("no-filter");
+        var drags = { down: !1, x: 0, y: 0, winWid: 0, winHei: 0, clientX: 0, clientY: 0 }, asideNav = $("#aside-nav")[0], getCss = function (a, e) { return a.currentStyle ? a.currentStyle[e] : document.defaultView.getComputedStyle(a, !1)[e] };
+        $("#aside-nav").on("mousedown", function (a) {
+            drags.down = !0, drags.clientX = a.clientX, drags.clientY = a.clientY, drags.x = getCss(this, "right"), drags.y = getCss(this, "top"), drags.winHei = $(window).height(), drags.winWid = $(window).width(), $(document).on("mousemove", function (a) {
+                if (drags.winWid > 640 && (a.clientX < 120 || a.clientX > drags.winWid - 50))
+                    return !1;
+                if (a.clientY < 180 || a.clientY > drags.winHei - 120)
+                    return !1;
+                var e = a.clientX - drags.clientX,
+                    t = a.clientY - drags.clientY;
+                asideNav.style.top = parseInt(drags.y) + t + "px";
+                asideNav.style.right = parseInt(drags.x) - e + "px";
+            })
+        }).on("mouseup", function () {
+            drags.down = !1, $(document).off("mousemove")
+        });
+        $('body').on('click', '[data-cat=process]', function () {
+            window.open('http://tv.wandhi.com/go.html?url=' + currentUrl);
+        });
+        $('body').on('click', '[data-cat=search]', function () {
+            window.open('http://tv.wandhi.com/');
+        });
+        $('body').on('click', '[data-cat=tb]', function () {
+            window.open('http://www1.huizhek.com/');
+        });
+        $('body').on('click', '[data-cat=jd]', function () {
+            window.open('http://jd.huizhek.com');
+        });
     } else if (reTaoBao.test(VideoUrl)) {
-            name = $.trim($('.tb-main-title').text());
-            html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
-            html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
-              $('.tb-action').append(html);
+        name = $.trim($('.tb-main-title').text());
+        html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
+        html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
+        $('.tb-action').append(html);
     } else if (reTmall.test(VideoUrl)) {
         name = $.trim($('meta[name=keywords]').attr('content'));
         html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
         html += '<div class="tb-btn-basket tb-btn-sku"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
-      $('.tb-action').append(html);
-    } else if(reJd.test(VideoUrl)){
-        var keywords=$(".sku-name").text().trim();
+        $('.tb-action').append(html);
+    } else if (reJd.test(VideoUrl)) {
+        var keywords = $(".sku-name").text().trim();
         $("#choose-btns").prepend('<a href="javascript:;" class="btn-special1 btn-lg btn-yhj"><span class="">领券购买</span></a>');
-        $(".btn-yhj").on('click',function(){window.open("http://jd.huizhek.com/?ah=total&kw="+encodeURIComponent( keywords));});
-    }
-
-
-    function AddUrl() {
-        $('#wandhiSearchBtn').attr('href', 'http://tv.wandhi.com/search/' + currentKey);
-        $('#wandhiVipBtn').attr('href', 'javascript:;');
-        $('#wandhiVipBtn').on('click', function () {
-            currentUrl = window.location.href;
-            window.location.href = 'http://tv.wandhi.com/go.html?url=' + currentUrl;
-        });
-        $('body').on('click','#wandhiVipBtn',function () {
-            currentUrl = window.location.href;
-            window.location.href = 'http://tv.wandhi.com/go.html?url=' + currentUrl;
-        });
+        $(".btn-yhj").on('click', function () { window.open("http://jd.huizhek.com/?ah=total&kw=" + encodeURIComponent(keywords)); });
     }
 })();
