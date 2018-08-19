@@ -33,7 +33,6 @@
 // @match        http*://item.jd.com/*
 // @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
 // @require      https://cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js
-// @require      http://tv.wandhi.com/static/style/asidenav.js
 // @grant        GM_setClipboard
 // @run-at       document-end
 // @grant        unsafeWindow
