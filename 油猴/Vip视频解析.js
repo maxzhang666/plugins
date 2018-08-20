@@ -56,7 +56,7 @@
     var reTaoBao = /taobao/i;
     var reTmall = /tmall/i;
     var reJd = /jd/i;
-
+    var html='';
     if (reAqy.test(currentUrl) || reLS.test(currentUrl) || reTX.test(currentUrl) || reTD.test(currentUrl) || reMG.test(currentUrl) || reSH.test(currentUrl) || rePP.test(currentUrl) || reYk.test(currentUrl)) {
         var sidenav = '<div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" class="aside-menu" title="\u6309\u4f4f\u62d6\u52a8">VIP</label><a href="javascript:void(0)" title="\u7535\u5f71\u641c\u7d22" data-cat="search" class="menu-item menu-line menu-first">\u7535\u5f71<br>\u641c\u7d22</a><a href="javascript:void(0)" title="\u89c6\u9891\u89e3\u6790" data-cat="process" class="menu-item menu-line menu-second">\u89c6\u9891<br>\u89e3\u6790</a><a href="javascript:void(0)" title="\u7edd\u4e16\u597d\u5238" data-cat="tb" class="menu-item menu-line menu-third">\u7edd\u4e16<br>\u597d\u5238</a><a href="javascript:void(0)" title="\u4eac\u4e1c\u597d\u5238" data-cat="jd" class="menu-item menu-line menu-fourth">\u4eac\u4e1c<br>\u597d\u5238</a></div>';
         $("body").append(sidenav).append($('<link rel="stylesheet" href="//tv.wandhi.com/static/style/asidenav.css">'));
