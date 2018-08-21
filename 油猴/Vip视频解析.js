@@ -1,11 +1,12 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网） 2018-08-18 可用
+// @name         一键VIP视频解析、去广告（全网） 2018-08-20 可用
 // @namespace    http://www.wandhi.com/
-// @version      2.8.1
+// @version      2.8.2
 // @description  在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮，在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
 // @match        *://*.iqiyi.com/v_*
+// @match        *://*.iqiyi.com/w_*
 // @match        *://*.iqiyi.com/dianying/*
 // @match        *://*.le.com/ptv/vplay/*
 // @match        *://v.qq.com/x/cover/*
