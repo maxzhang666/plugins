@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         一键VIP视频解析、去广告（全网），优惠券  2018-08-24 可用
 // @namespace    http://www.wandhi.com/
-// @version      2.8.4
+// @version      2.8.5
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券，
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -94,17 +94,17 @@
         });
     } else if (reTaoBao.test(currentUrl)) {
         name = $.trim($('.tb-main-title').text());
-        html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
-        html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
+        html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e00\u0029</a></div>';
+        html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
     } else if (reTmall.test(currentUrl)) {
         name = $.trim($('meta[name=keywords]').attr('content'));
-        html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">领取优惠券(通道一)</a></div>';
-        html += '<div class="tb-btn-basket tb-btn-sku"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">领取优惠券(通道二)</a></div>';
+        html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e00\u0029</a></div>';
+        html += '<div class="tb-btn-basket tb-btn-sku"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
     } else if (reJd.test(currentUrl)) {
         var keywords = $(".sku-name").text().trim();
-        $("#choose-btns").prepend('<a href="javascript:;" class="btn-special1 btn-lg btn-yhj"><span class="">领券购买</span></a>');
+        $("#choose-btns").prepend('<a href="javascript:;" class="btn-special1 btn-lg btn-yhj"><span class="">\u9886\u5238\u8d2d\u4e70</span></a>');
         $(".btn-yhj").on('click', function () { window.open("http://jd.huizhek.com/?ah=total&kw=" + encodeURIComponent(keywords)); });
     }
 })();
