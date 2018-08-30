@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         一键VIP视频解析、去广告（全网），音乐解析下个版本更新  2018-08-29 可用
 // @namespace    http://www.wandhi.com/
-// @version      2.8.6
-// @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券，
+// @version      2.8.7
+// @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券
 // @author       Wandhi
 // @supportURL   https://shang.qq.com/wpa/qunwpa?idkey=9901cc46fa4626759852faec8a4f8b4b951a883e191670e60d3f940da0ef2749
 // @match        *://v.youku.com/v_show/*
