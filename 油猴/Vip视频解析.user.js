@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-08-31 可用
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-09-03 可用
 // @namespace    http://www.wandhi.com/
-// @version      2.9
+// @version      2.9.1
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -154,10 +154,15 @@
         html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
     } else if (reTmall.test(currentUrl)) {
-        name = $.trim($('meta[name=keywords]').attr('content'));
-        html = '<div class="tb-btn-basket tb-btn-sku"  style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e00\u0029</a></div>';
-        html += '<div class="tb-btn-basket tb-btn-sku"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
+        html = '<div class="tb-btn-basket tb-btn-sku Wandhi" data-p="1" style="padding-top:10px;"><a target="_blank" href="javascript:void(0)">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e00\u0029</a></div>';
+        html += '<div class="tb-btn-basket tb-btn-sku Wandhi" data-p="1"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="javascript:void(0)">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
+        $('body').on('click', '.Wandhi', function () {
+            var name=$(".tb-detail-hd a").text();
+            var url=window.atob("aHR0cDovL3d3dzEuaHVpemhlay5jb20vaW5kZXgucGhwP3I9c2VhcmNobGlzdCZ0eXBlPTAma3dkPQ==")+ encodeURI(name);
+            if( $(this).data("p")==2){url=window.atob("aHR0cDovL3d3dy5odWl6aGVrLmNvbS9pbmRleC5waHA/cj1sJmt3PQ==")+ encodeURI(name);}
+            window.open(url);
+        });
     } else if (reJd.test(currentUrl)) {
         var keywords = $(".sku-name").text().trim();
         $("#choose-btns").prepend('<a href="javascript:;" class="btn-special1 btn-lg btn-yhj"><span class="">\u9886\u5238\u8d2d\u4e70</span></a>');
