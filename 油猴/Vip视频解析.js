@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-09-03 可用
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-09-05 可用
 // @namespace    http://www.wandhi.com/
-// @version      2.9.1
+// @version      2.9.2
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -25,12 +25,7 @@
 // @match        *://v.yinyuetai.com/video/*
 // @match        *://v.yinyuetai.com/playlist/*
 // @match        *://*.wasu.cn/Play/show/*
-// @match        *://pan.baidu.com/disk/home*
-// @match        *://yun.baidu.com/disk/home*
-// @match        *://pan.baidu.com/s/*
-// @match        *://yun.baidu.com/s/*
-// @match        *://pan.baidu.com/share/link*
-// @match        *://yun.baidu.com/share/link*
+// @match        *://music.taihe.com/song*
 // @match        http*://item.taobao.com/*
 // @match        http*://detail.tmall.com/*
 // @match        http*://item.jd.com/*
@@ -77,11 +72,11 @@
 	var reBD = /baidu/i;
 	var reQT = /qingting/i;
 	var reLZ = /lizhi/i;
-	var reMG = /migu/i;
+	var reMiGu = /migu/i;
 	var reXMLY = /ximalaya/i;
     var html='';
     var name='';
-    if(reWY.test(currentUrl)||reQQ.test(currentUrl)||reKG.test(currentUrl)||reKW.test(currentUrl)||reXM.test(currentUrl)||reBD.test(currentUrl)||reQT.test(currentUrl)||reLZ.test(currentUrl)||reMG.test(currentUrl)||reXMLY.test(currentUrl))
+    if(reWY.test(currentUrl)||reQQ.test(currentUrl)||reKG.test(currentUrl)||reKW.test(currentUrl)||reXM.test(currentUrl)||reBD.test(currentUrl)||reQT.test(currentUrl)||reLZ.test(currentUrl)||reMiGu.test(currentUrl)||reXMLY.test(currentUrl))
     {
         var sidenav = '<div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" class="aside-menu" title="\u6309\u4f4f\u62d6\u52a8">VIP</label><a href="javascript:void(0)" title="\u7535\u5f71\u641c\u7d22" data-cat="search" class="menu-item menu-line menu-first">\u7535\u5f71<br>\u641c\u7d22</a><a href="javascript:void(0)" title="\u97f3\u4e50\u4e0b\u8f7d" data-cat="process" class="menu-item menu-line menu-second">\u97f3\u4e50<br>\u4e0b\u8f7d</a><a href="javascript:void(0)" title="\u7edd\u4e16\u597d\u5238" data-cat="tb" class="menu-item menu-line menu-third">\u7edd\u4e16<br>\u597d\u5238</a><a href="javascript:void(0)" title="\u4eac\u4e1c\u597d\u5238" data-cat="jd" class="menu-item menu-line menu-fourth">\u4eac\u4e1c<br>\u597d\u5238</a></div>';
         $("body").append(sidenav).append($('<link rel="stylesheet" href="//tv.wandhi.com/static/style/asidenav.css">'));
