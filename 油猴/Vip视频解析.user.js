@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-09-05 可用
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-09-20 可用
 // @namespace    http://www.wandhi.com/
-// @version      2.9.2
+// @version      2.9.5
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -41,6 +41,7 @@
 // @match        *://www.ximalaya.com/*
 // @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
 // @require      https://cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js
+// @require      https://greasyfork.org/scripts/371378-layer/code/layer.js?version=622010
 // @grant        GM_setClipboard
 // @run-at       document-end
 // @grant        unsafeWindow
@@ -79,11 +80,11 @@
     if(reWY.test(currentUrl)||reQQ.test(currentUrl)||reKG.test(currentUrl)||reKW.test(currentUrl)||reXM.test(currentUrl)||reBD.test(currentUrl)||reQT.test(currentUrl)||reLZ.test(currentUrl)||reMiGu.test(currentUrl)||reXMLY.test(currentUrl))
     {
         var sidenav = '<div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" class="aside-menu" title="\u6309\u4f4f\u62d6\u52a8">VIP</label><a href="javascript:void(0)" title="\u7535\u5f71\u641c\u7d22" data-cat="search" class="menu-item menu-line menu-first">\u7535\u5f71<br>\u641c\u7d22</a><a href="javascript:void(0)" title="\u97f3\u4e50\u4e0b\u8f7d" data-cat="process" class="menu-item menu-line menu-second">\u97f3\u4e50<br>\u4e0b\u8f7d</a><a href="javascript:void(0)" title="\u7edd\u4e16\u597d\u5238" data-cat="tb" class="menu-item menu-line menu-third">\u7edd\u4e16<br>\u597d\u5238</a><a href="javascript:void(0)" title="\u4eac\u4e1c\u597d\u5238" data-cat="jd" class="menu-item menu-line menu-fourth">\u4eac\u4e1c<br>\u597d\u5238</a></div>';
-        $("body").append(sidenav).append($('<link rel="stylesheet" href="//tv.wandhi.com/static/style/asidenav.css">'));
+        $("body").append(sidenav).append($('<link rel="stylesheet" href="//tv.wandhi.com/static/style/asidenav.css">')).append($('<link rel="stylesheet" href="https://cdn.bootcss.com/layer/3.1.0/theme/default/layer.css">'));
         var ua = navigator.userAgent;
         /Safari|iPhone/i.test(ua) && 0 == /chrome/i.test(ua) && $("#aside-nav").addClass("no-filter");
         var drags = { down: !1, x: 0, y: 0, winWid: 0, winHei: 0, clientX: 0, clientY: 0 }, asideNav = $("#aside-nav")[0], getCss = function (a, e) { return a.currentStyle ? a.currentStyle[e] : document.defaultView.getComputedStyle(a, !1)[e] };
-        $("#aside-nav").on("mousedown", function (a) {
+        $("body").on("mousedown","#aside-nav", function (a) {
             drags.down = !0, drags.clientX = a.clientX, drags.clientY = a.clientY, drags.x = getCss(this, "right"), drags.y = getCss(this, "top"), drags.winHei = $(window).height(), drags.winWid = $(window).width(), $(document).on("mousemove", function (a) {
                 if (drags.winWid > 640 && (a.clientX < 120 || a.clientX > drags.winWid - 50))
                     return !1;
@@ -94,11 +95,28 @@
                 asideNav.style.top = parseInt(drags.y) + t + "px";
                 asideNav.style.right = parseInt(drags.x) - e + "px";
             })
-        }).on("mouseup", function () {
+        }).on("mouseup","#aside-nav", function () {
             drags.down = !1, $(document).off("mousemove")
         });
         $('body').on('click', '[data-cat=process]', function () {
-            window.open('http://music.wandhi.com/?url=' + currentUrl);
+            if(reXMLY.test(currentUrl))
+            {
+                if(__INITIAL_STATE__.SoundDetailPage!=undefined)
+                {
+                    window.open('http://music.wandhi.com/?id='+__INITIAL_STATE__.SoundDetailPage.trackId+'&type=ximalaya');
+                }else
+                {
+                    layer.closeAll();
+                    var html='<div style="padding:0px 50px 0px 50px;"><ul>';
+                    $.each(__INITIAL_STATE__.AlbumDetailTrackList.tracksInfo.tracks,function(index,item){html+='<li><a href="http://music.wandhi.com/?id='+item.trackId+'&type=ximalaya" target="_blank">'+item.title+'</a></li>';});
+                    html+='</ul></div>';
+                    layer.open({type: 1,area: ['auto', '30%'],title: dde("JUU0JUI4JUJBJUU0JUJEJUEwJUU2JTg5JUJFJUU1JTg4JUIwJUU0JUJBJTg2JUU4JUJGJTk5JUU0JUJBJTlCJUU2JTlCJUIyJUU3JTlCJUFFJUU4JUE3JUEzJUU2JTlFJTkwJUUyJTgwJUE2JUUyJTgwJUE2JUU0JUJCJTgwJUU0JUI5JTg4JUVGJUJDJTlGJUU2JTg4JTkxJUU0JUI4JTkxJUVGJUJDJTlGJUU0JUJCJUE1JUU1JTkwJThFJUU1JTg2JThEJUU4JUFGJUI0JUU1JTkwJUE3"),shade: 0.6,maxmin: false,anim: 2,content: html});
+                }
+
+            }else
+            {
+                window.open('http://music.wandhi.com/?url=' + currentUrl);
+            }
         });
         $('body').on('click', '[data-cat=search]', function () {
             window.open('http://tv.wandhi.com/');
@@ -109,14 +127,14 @@
         $('body').on('click', '[data-cat=jd]', function () {
             window.open('http://jd.huizhek.com');
         });
-    } 
+    }
     else if (reAqy.test(currentUrl) || reLS.test(currentUrl) || reTX.test(currentUrl) || reTD.test(currentUrl) || reMG.test(currentUrl) || reSH.test(currentUrl) || rePP.test(currentUrl) || reYk.test(currentUrl)) {
         var sidenav = '<div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" class="aside-menu" title="\u6309\u4f4f\u62d6\u52a8">VIP</label><a href="javascript:void(0)" title="\u7535\u5f71\u641c\u7d22" data-cat="search" class="menu-item menu-line menu-first">\u7535\u5f71<br>\u641c\u7d22</a><a href="javascript:void(0)" title="\u89c6\u9891\u89e3\u6790" data-cat="process" class="menu-item menu-line menu-second">\u89c6\u9891<br>\u89e3\u6790</a><a href="javascript:void(0)" title="\u7edd\u4e16\u597d\u5238" data-cat="tb" class="menu-item menu-line menu-third">\u7edd\u4e16<br>\u597d\u5238</a><a href="javascript:void(0)" title="\u4eac\u4e1c\u597d\u5238" data-cat="jd" class="menu-item menu-line menu-fourth">\u4eac\u4e1c<br>\u597d\u5238</a></div>';
         $("body").append(sidenav).append($('<link rel="stylesheet" href="//tv.wandhi.com/static/style/asidenav.css">'));
         var ua = navigator.userAgent;
         /Safari|iPhone/i.test(ua) && 0 == /chrome/i.test(ua) && $("#aside-nav").addClass("no-filter");
         var drags = { down: !1, x: 0, y: 0, winWid: 0, winHei: 0, clientX: 0, clientY: 0 }, asideNav = $("#aside-nav")[0], getCss = function (a, e) { return a.currentStyle ? a.currentStyle[e] : document.defaultView.getComputedStyle(a, !1)[e] };
-        $("#aside-nav").on("mousedown", function (a) {
+        $("body").on("mousedown","#aside-nav", function (a) {
             drags.down = !0, drags.clientX = a.clientX, drags.clientY = a.clientY, drags.x = getCss(this, "right"), drags.y = getCss(this, "top"), drags.winHei = $(window).height(), drags.winWid = $(window).width(), $(document).on("mousemove", function (a) {
                 if (drags.winWid > 640 && (a.clientX < 120 || a.clientX > drags.winWid - 50))
                     return !1;
@@ -127,7 +145,7 @@
                 asideNav.style.top = parseInt(drags.y) + t + "px";
                 asideNav.style.right = parseInt(drags.x) - e + "px";
             })
-        }).on("mouseup", function () {
+        }).on("mouseup","#aside-nav", function () {
             drags.down = !1, $(document).off("mousemove")
         });
         $('body').on('click', '[data-cat=process]', function () {
@@ -163,4 +181,11 @@
         $("#choose-btns").prepend('<a href="javascript:;" class="btn-special1 btn-lg btn-yhj"><span class="">\u9886\u5238\u8d2d\u4e70</span></a>');
         $(".btn-yhj").on('click', function () { window.open("http://jd.huizhek.com/?ah=total&kw=" + encodeURIComponent(keywords)); });
     }
+    function loader()
+    {
+        $("body").append($('<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>'));
+        $("body").append($('<script src="//tv.wandhi.com/static/js/layer/layer.js"></script>)'));
+    }
+    function de(a){return window.atob(a);}
+    function dde(a){return decodeURIComponent(window.atob(a));}
 })();
