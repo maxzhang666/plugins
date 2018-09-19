@@ -98,7 +98,13 @@
             drags.down = !1, $(document).off("mousemove")
         });
         $('body').on('click', '[data-cat=process]', function () {
-            window.open('http://music.wandhi.com/?url=' + currentUrl);
+            if(reXMLY.test(currentUrl))
+            {
+                window.open('http://music.wandhi.com/?id='+window.__INITIAL_STATE__.SoundDetailPage.trackId+'&type=ximalaya');
+            }else
+            {
+                window.open('http://music.wandhi.com/?url=' + currentUrl);
+            }
         });
         $('body').on('click', '[data-cat=search]', function () {
             window.open('http://tv.wandhi.com/');
