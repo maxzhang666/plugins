@@ -109,8 +109,8 @@
                 }else
                 {
                     layer.closeAll();
-                    var html='<div style="padding:0px 50px 0px 50px;"><ul>';
-                    $.each(__INITIAL_STATE__.AlbumDetailTrackList.tracksInfo.tracks,function(index,item){html+='<li><a href="http://music.wandhi.com/?id='+item.trackId+'&type=ximalaya" target="_blank">'+item.title+'</a></li>';});
+                    var html='<div style="padding:0px 50px 0px 50px;"><ul class="sound-list dOi2">';
+                    $.each(__INITIAL_STATE__.AlbumDetailTrackList.tracksInfo.tracks,function(index,item){html+='<li class="dOi2"><a href="http://music.wandhi.com/?id='+item.trackId+'&type=ximalaya" target="_blank">'+item.title+'</a></li>';});
                     html+='</ul></div>';
                     layer.open({type: 1,area: ['auto', '30%'],title: dde("JUU0JUI4JUJBJUU0JUJEJUEwJUU2JTg5JUJFJUU1JTg4JUIwJUU0JUJBJTg2JUU4JUJGJTk5JUU0JUJBJTlCJUU2JTlCJUIyJUU3JTlCJUFFJUU4JUE3JUEzJUU2JTlFJTkwJUUyJTgwJUE2JUUyJTgwJUE2JUU0JUJCJTgwJUU0JUI5JTg4JUVGJUJDJTlGJUU2JTg4JTkxJUU0JUI4JTkxJUVGJUJDJTlGJUU0JUJCJUE1JUU1JTkwJThFJUU1JTg2JThEJUU4JUFGJUI0JUU1JTkwJUE3"),shade: 0.6,maxmin: false,anim: 2,content: html});
                 }
