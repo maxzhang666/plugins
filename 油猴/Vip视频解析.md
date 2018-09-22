@@ -54,9 +54,10 @@
 * Q:优惠券来路是否正规
 > A:优惠券收集自淘宝官方，可以放心食用
 
-# 交流群：**340569308**
+# 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
 > 更新预告  价格趋势查询即将来袭
+* 2.9.6 修正火狐浏览器悬浮按钮不显示的问题，修正腾讯视频部分匹配错误问题
 * 2.9.5 喜马拉雅专辑页新增解析列表
 ![](https://ws2.sinaimg.cn/large/005SntQFly1fvev0csoj5j30rm0ekn1y.jpg)
 * 2.9.4 修正一处匹配错误,优化喜马拉雅曲目匹配规则
