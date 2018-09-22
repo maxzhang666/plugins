@@ -1,12 +1,12 @@
 # vip视频解析工具
 
-# 交流群：**340569308**
+# 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
 > 有问题可以加群反馈，修复更及时
 
 ## 视频解析
 
-在视频标题旁上显示“vip解析(去广告)”按钮和“搜索电影”按钮
+在视频页面展示一个VIP悬浮按钮
 
 支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...
 ## 音乐下载
