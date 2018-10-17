@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-10-08 可用
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-10-18 可用
 // @namespace    http://www.wandhi.com/
 // @homepage     https://www.wandhi.com/post-918.html
 // @supportURL   https://www.wandhi.com/post-918.html
-// @version      2.9.8
+// @version      2.9.9
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券
 // @author       Wandhi
 // @match        *://v.youku.com/v_show/*
@@ -43,7 +43,7 @@
 // @match        *://www.ximalaya.com/*
 // @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
 // @require      https://cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js
-// @require      https://greasyfork.org/scripts/371378-layer/code/layer.js?version=622010
+// @require      https://greasyfork.org/scripts/373336-layer-wandhi/code/layer_wandhi.js?version=637587
 // @grant        GM_setClipboard
 // @run-at       document-end
 // @grant        unsafeWindow
