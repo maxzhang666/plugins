@@ -28,9 +28,9 @@
 // @match        *://v.yinyuetai.com/playlist/*
 // @match        *://*.wasu.cn/Play/show/*
 // @match        *://music.taihe.com/song*
-// @match        http*://item.taobao.com/*
-// @match        http*://detail.tmall.com/*
-// @match        http*://item.jd.com/*
+// @match        *://item.taobao.com/*
+// @match        *://detail.tmall.com/*
+// @match        *://item.jd.com/*
 // @match        *://music.163.com/*
 // @match        *://y.qq.com/*
 // @match        *://www.kugou.com/*
