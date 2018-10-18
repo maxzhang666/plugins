@@ -365,6 +365,7 @@
         if (host.indexOf('item.taobao.com') >= 0||host.indexOf('detail.tmall.com') >= 0) {
             timerDoOnce("body", function(){
                 var s = document.createElement('script');
+                //历史价格查询
                 s.setAttribute('src','https://shared-https.ydstatic.com/gouwuex/ext/script/extension_3_1.js?vendor=youdao&browser=firefox');
                 s.setAttribute('charset','utf-8');
                 document.body.appendChild(s);
