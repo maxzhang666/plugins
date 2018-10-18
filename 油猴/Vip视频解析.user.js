@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-10-18 可用
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-10-19 可用
 // @namespace    http://www.wandhi.com/
 // @homepage     https://www.wandhi.com/post-918.html
 // @supportURL   https://www.wandhi.com/post-918.html
@@ -41,7 +41,7 @@
 // @match        *://www.lizhi.fm/*
 // @match        *://music.migu.cn/*
 // @match        *://www.ximalaya.com/*
-// @require      https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
+// @require      https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js
 // @require      https://cdn.bootcss.com/clipboard.js/1.5.16/clipboard.min.js
 // @require      https://greasyfork.org/scripts/373336-layer-wandhi/code/layer_wandhi.js?version=637587
 // @grant        GM_setClipboard
