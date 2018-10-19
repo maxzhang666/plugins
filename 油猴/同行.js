@@ -1,5 +1,6 @@
 // ==UserScript==
 // @name         【2018年10月19日更新可用】网盘万能钥匙，自动查询百度网盘分享链接的提取码,全网VIP视频解析播放,全网付费音乐免费下载,淘宝、拼多多大额购物优惠券领取，支持历史价格查询
+// @name-en      【2018年10月19日更新可用】网盘万能钥匙，自动查询百度网盘分享链接的提取码,全网VIP视频解析播放,全网付费音乐免费下载,淘宝、拼多多大额购物优惠券领取，支持历史价格查询
 // @namespace    http://www.17gouwu.cn/
 // @connect api.ganfl.com
 // @version      2.7.2
@@ -41,7 +42,7 @@
 // @match        *://www.lizhi.fm/*
 // @match        *://music.migu.cn/*
 // @match        *://www.ximalaya.com/*
-//@icon          http://www.ganfl.com/favicon.ico
+//@icon          https://www.wandhi.com/favicon.ico
 // @grant  GM_xmlhttpRequest
 // @grant  GM_info
 // @grant    GM.getValue
