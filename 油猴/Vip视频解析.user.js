@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-10-20 可用
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-10-21 可用
 // @namespace    http://www.wandhi.com/
 // @homepage     https://www.wandhi.com/post-918.html
 // @supportURL   https://www.wandhi.com/post-918.html
