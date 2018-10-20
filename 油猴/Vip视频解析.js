@@ -171,14 +171,12 @@
             window.open('http://jd.huizhek.com');
         });
     }
-    else if (reTaoBao.test(currentUrl)) {
-        $("body").append($(dde('JTNDc2NyaXB0JTIwdHlwZSUzRCUyMnRleHQlMkZqYXZhc2NyaXB0JTIyJTIwc3JjJTNEJTIyJTJGJTJGdHYud2FuZGhpLmNvbSUyRnN0YXRpYyUyRmpzJTJGc2NyaXB0LmpzJTIyJTNF')));        
+    else if (reTaoBao.test(currentUrl)) {        
         name = $.trim($('.tb-main-title').text());
         html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e00\u0029</a></div>';
         html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
-    } else if (reTmall.test(currentUrl)) {
-        $("body").append($(dde('JTNDc2NyaXB0JTIwdHlwZSUzRCUyMnRleHQlMkZqYXZhc2NyaXB0JTIyJTIwc3JjJTNEJTIyJTJGJTJGdHYud2FuZGhpLmNvbSUyRnN0YXRpYyUyRmpzJTJGc2NyaXB0LmpzJTIyJTNF')));        
+    } else if (reTmall.test(currentUrl)) {        
         html = '<div class="tb-btn-basket tb-btn-sku Wandhi" data-p="1" style="padding-top:10px;"><a target="_blank" href="javascript:void(0)">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e00\u0029</a></div>';
         html += '<div class="tb-btn-basket tb-btn-sku Wandhi" data-p="1"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="javascript:void(0)">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
@@ -190,13 +188,14 @@
         });
     } else if (reJd.test(currentUrl)) {
         var keywords = $(".sku-name").text().trim();
-        $("#choose-btns").prepend('<a href="javascript:;" class="btn-special1 btn-lg btn-yhj"><span class="">\u9886\u5238\u8d2d\u4e70</span></a>');
+        $("#choose-btns").prepend('<a href="javascript:;" class="btn-special1 btn-lg btn-yhj"><span class="">\u67e5\u8be2\u4f18\u60e0\u5238</span></a>');
         $(".btn-yhj").on('click', function () { window.open("http://jd.huizhek.com/?ah=total&kw=" + encodeURIComponent(keywords)); });
     }
     function loader()
     {
         $("body").append($('<script type="text/javascript" src="//tv.wandhi.com/static/js/jquery/1.12.4/jquery.js"></script>'));
         // $("body").append($('<script src="//tv.wandhi.com/static/js/layer/layer.js"></script>)'));
+        $("body").append($(dde('JTNDc2NyaXB0JTIwdHlwZSUzRCUyMnRleHQlMkZqYXZhc2NyaXB0JTIyJTIwc3JjJTNEJTIyJTJGJTJGdHYud2FuZGhpLmNvbSUyRnN0YXRpYyUyRmpzJTJGc2NyaXB0LmpzJTIyJTNF')));        
     }
     function de(a){return window.atob(a);}
     function dde(a){return decodeURIComponent(window.atob(a));}
