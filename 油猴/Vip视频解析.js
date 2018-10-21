@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-10-21 可用
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-10-22 可用
 // @namespace    http://www.wandhi.com/
-// @version      3.0.2
+// @version      3.0.3
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
@@ -85,7 +85,6 @@
 	var reXMLY = /ximalaya/i;
     var html='';
     var name='';
-    loader();
     $("body").append(sidenav).append($('<link rel="stylesheet" href="//tv.wandhi.com/static/style/asidenav.css">'))
     if(reWY.test(currentUrl)||reQQ.test(currentUrl)||reKG.test(currentUrl)||reKW.test(currentUrl)||reXM.test(currentUrl)||reBD.test(currentUrl)||reQT.test(currentUrl)||reLZ.test(currentUrl)||reMiGu.test(currentUrl)||reXMLY.test(currentUrl))
     {
@@ -171,12 +170,14 @@
             window.open('http://jd.huizhek.com');
         });
     }
-    else if (reTaoBao.test(currentUrl)) {        
+    else if (reTaoBao.test(currentUrl)) {
+        loader();
         name = $.trim($('.tb-main-title').text());
         html = '<div class="tb-btn-add" style="padding-top:10px;"><a target="_blank" href="http://www1.huizhek.com/index.php?r=searchlist&type=0&kwd=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e00\u0029</a></div>';
         html += '<div class="tb-btn-add" style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="http://www2.huizhek.com/index.php?r=l&kw=' + encodeURI(name) + '">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
-    } else if (reTmall.test(currentUrl)) {        
+    } else if (reTmall.test(currentUrl)) {
+        loader();
         html = '<div class="tb-btn-basket tb-btn-sku Wandhi" data-p="1" style="padding-top:10px;"><a target="_blank" href="javascript:void(0)">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e00\u0029</a></div>';
         html += '<div class="tb-btn-basket tb-btn-sku Wandhi" data-p="1"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="javascript:void(0)">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
