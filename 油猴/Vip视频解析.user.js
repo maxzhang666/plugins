@@ -3,7 +3,7 @@
 // @namespace    http://www.wandhi.com/
 // @homepage     https://www.wandhi.com/post-918.html
 // @supportURL   https://www.wandhi.com/post-918.html
-// @version      3.0.3
+// @version      3.0.4
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
