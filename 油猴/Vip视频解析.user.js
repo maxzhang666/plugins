@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-10-22 可用
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-11-11 可用
 // @namespace    http://www.wandhi.com/
 // @homepage     https://www.wandhi.com/post-918.html
 // @supportURL   https://www.wandhi.com/post-918.html
-// @version      3.0.4
+// @version      3.0.5
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
@@ -176,7 +176,7 @@
         html += '<div class="tb-btn-basket tb-btn-sku Wandhi" data-p="1"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="javascript:void(0)">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
         $('body').on('click', '.Wandhi', function () {
-            var name=$(".tb-detail-hd h1").text();
+            var name=$.trim($(".tb-detail-hd h1").text());
             var url=window.atob("aHR0cDovL3d3dzEuaHVpemhlay5jb20vaW5kZXgucGhwP3I9c2VhcmNobGlzdCZ0eXBlPTAma3dkPQ==")+ encodeURI(name);
             if( $(this).data("p")==2){url=window.atob("aHR0cDovL3d3dy5odWl6aGVrLmNvbS9pbmRleC5waHA/cj1sJmt3PQ==")+ encodeURI(name);}
             window.open(url);
