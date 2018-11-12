@@ -182,7 +182,7 @@
         html += '<div class="tb-btn-basket tb-btn-sku Wandhi" data-p="1"  style="padding-top: 10px;padding-left: 10px;"><a target="_blank" href="javascript:void(0)">\u9886\u53d6\u4f18\u60e0\u5238\u0028\u901a\u9053\u4e8c\u0029</a></div>';
         $('.tb-action').append(html);
         $('body').on('click', '.Wandhi', function () {
-            var name=$.trim($(".tb-detail-hd h1"));
+            var name=$.trim($(".tb-detail-hd h1").text());
             var url=window.atob("aHR0cDovL3d3dzEuaHVpemhlay5jb20vaW5kZXgucGhwP3I9c2VhcmNobGlzdCZ0eXBlPTAma3dkPQ==")+ encodeURI(name);
             if( $(this).data("p")==2){url=window.atob("aHR0cDovL3d3dy5odWl6aGVrLmNvbS9pbmRleC5waHA/cj1sJmt3PQ==")+ encodeURI(name);}
             window.open(url);
