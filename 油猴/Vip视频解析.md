@@ -56,8 +56,8 @@
 
 # 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
-> 更新预告  价格趋势查询即将来袭 帮您辨别真假“双十一”
 
+* 3.0.8 修正一处URL匹配异常
 * 3.0.7 修正一处匹配异常
 * 3.0.6 修正已知错误
 * 3.0.5 修正一处匹配异常
