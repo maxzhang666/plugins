@@ -4,6 +4,7 @@ $("article.baidu_pl > div.hide-article-box").remove();
 $("div.pulllog-box").remove();
 $("div.container > aside > div:eq(1)").remove();
 $("#asideFooter > .aside-box:eq(0)").remove();
+$(".adblock").remove();
 $("li.bdsharebuttonbox").remove();
 $("#dmp_ad_58").remove();
 $("div.recommend-box > div.recommend-ad-box").remove();
