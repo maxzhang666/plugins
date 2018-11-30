@@ -8,7 +8,7 @@ $(".adblock").remove();
 $("li.bdsharebuttonbox").remove();
 $("#dmp_ad_58").remove();
 $("div.recommend-box > div.recommend-ad-box").remove();
-$("#btn-readmore").click();
+
 csdn.copyright.init("", "", ""); //去除剪贴板劫持
 function removeRecommandAds() {
     var lastLength = $("div.recommend-box").children().size();
@@ -18,6 +18,10 @@ function removeRecommandAds() {
             $("div.recommend-box > div").eq(i).remove();
             i--;
         }
+    }
+    if($("#btn-readmore").length>0)
+    {
+      $("#btn-readmore").click();
     }
 }
 setTimeout(removeRecommandAds, 2000);
