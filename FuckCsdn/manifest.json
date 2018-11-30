@@ -14,6 +14,7 @@
     },
     "content_scripts": [{
         "matches": ["*://blog.csdn.net/*"],
-        "js": ["jquery.3.3.1.mini.js", "FuckCSDN.js"]
-    }]
+        "js": ["jquery-3.2.1.min.js", "js/crxTool.js", "FuckCSDN.js"]
+    }],
+    "web_accessible_resources": ["js/clearPaster.js"]
 }
