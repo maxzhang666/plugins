@@ -2,7 +2,7 @@
 // @name         CSDN网页优化，自动展开，去广告，免登陆，剪切板净化 2018-12-06可用
 // @namespace    http://www.wandhi.com/
 // @version      1.0
-// @description  CSDN网页优化，自动展开，去广告，免登陆，剪切板净化 2018-12-06可用
+// @description  CSDN网页优化，自动展开，去广告，免登陆，剪切板净化
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
 // @match        *://blog.csdn.net/*
