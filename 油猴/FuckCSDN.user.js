@@ -42,8 +42,7 @@
         csdn.copyright.init("", "", "");
     }
     var hookedInterval = window.setInterval;    
-    window.setInterval = function (callback, seconds) {
-        // Magic time
+    window.setInterval = function (callback, seconds) {        
         if (seconds == 1e3) {
             document.querySelector('#check-adblock-time').remove();
             return;
