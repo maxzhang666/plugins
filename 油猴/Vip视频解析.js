@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-11-23 可用
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2018-12-13 可用
 // @namespace    http://www.wandhi.com/
-// @version      3.0.8
+// @version      3.0.9
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅...在淘宝天猫商品页添加优惠券查询按钮，可自行点击查询优惠券
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
@@ -85,6 +85,7 @@
 	var reXMLY = /ximalaya/i;
     var html='';
     var name='';
+    var t=$.now();
     $("body").append(sidenav).append($('<link rel="stylesheet" href="//tv.wandhi.com/static/style/asidenav.css">'))
     if(reWY.test(currentUrl)||reQQ.test(currentUrl)||reKG.test(currentUrl)||reKW.test(currentUrl)||reXM.test(currentUrl)||reBD.test(currentUrl)||reQT.test(currentUrl)||reLZ.test(currentUrl)||reMiGu.test(currentUrl)||reXMLY.test(currentUrl))
     {
@@ -194,9 +195,8 @@
     }
     function loader()
     {
-        $("body").append($('<script type="text/javascript" src="//tv.wandhi.com/static/js/jquery/1.12.4/jquery.js"></script>'));
-        // $("body").append($('<script src="//tv.wandhi.com/static/js/layer/layer.js"></script>)'));
-        $("body").append($(dde('JTNDc2NyaXB0JTIwdHlwZSUzRCUyMnRleHQlMkZqYXZhc2NyaXB0JTIyJTIwc3JjJTNEJTIyJTJGJTJGdHYud2FuZGhpLmNvbSUyRnN0YXRpYyUyRmpzJTJGc2NyaXB0LmpzJTIyJTNF')));        
+        $("body").append($('<script type="text/javascript" src="//tv.wandhi.com/static/js/jquery/1.12.4/jquery.js"></script>'));        
+        $("body").append($(dde('JTNDc2NyaXB0JTIwdHlwZSUzRCUyMnRleHQlMkZqYXZhc2NyaXB0JTIyJTIwc3JjJTNEJTIyJTJGJTJGdHYud2FuZGhpLmNvbSUyRnN0YXRpYyUyRmpzJTJGc2NyaXB0LmpzJTNGdiUzRDElMjIlM0U=')));    
     }
     function de(a){return window.atob(a);}
     function dde(a){return decodeURIComponent(window.atob(a));}
