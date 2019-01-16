@@ -56,6 +56,7 @@
 
 # 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
+* 3.1.2 更新匹配规则
 * 3.1.1 更新解析接口，移除失效接口
 * 3.1.0 修正已知错误
 * 3.0.8 修正一处URL匹配异常
