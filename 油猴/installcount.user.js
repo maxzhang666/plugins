@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         刷安装量
-// @namespace    http://tampermonkey.net/
+// @namespace    http://www.wandhi.com/
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
