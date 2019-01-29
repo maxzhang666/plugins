@@ -172,4 +172,4 @@
         curPlaySite = window.location.href;
         window.location.href = 'http://tv.wandhi.cn/go.html?url=' + encodeURI(curPlaySite);
     });
-})();
+});

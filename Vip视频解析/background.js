@@ -6,7 +6,9 @@ function pageContext(b, a) {
     }
     openplayer(b, page);
 }
-
+function de(a){return window.atob(a);}
+function dde(a){return decodeURIComponent(window.atob(a));}
+function getPar(a) {var b = location.search.match(new RegExp("[\?\&]" + a + "=([^\&]+)", "i"));if (b == null || b.length < 1) {return "";}return b[1];}
 function regexpo(c, a) {
     var b = new RegExp(c);
     if (b.test(a)) {
