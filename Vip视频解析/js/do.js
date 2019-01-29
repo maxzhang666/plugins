@@ -143,4 +143,4 @@ $(function() {
         curPlaySite = window.location.href;
         window.location.href = 'http://tv.wandhi.com/go.html?url=' + encodeURI(curPlaySite);
     });
-})();
+});
