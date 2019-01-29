@@ -3,12 +3,13 @@
     "scripts": ["background.js"]
   },
   "icons": {
-    "128": "img/128x128.png",
-    "48": "img/48.png",
-    "16": "vip.ico"
+    "128": "img/128.png",
+    "96": "img/96.png",
+    "60": "img/60.png",
+    "48": "img/48.png"
   },
   "browser_action": {
-    "default_icon": "img/vip.png",
+    "default_icon": "img/48.png",
     "default_title": "vip视频解析系统",
     "default_popup": "popup.html"
   },
