@@ -56,6 +56,7 @@
 
 # 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
+* 3.1.7 更换静态资源
 * 3.1.6 修正网易云音乐地址匹配异常
 * 3.1.5 更换静态资源
 * 3.1.4 重构预备
