@@ -1,3 +1,5 @@
+# 友情捐助
+![](https://ws1.sinaimg.cn/large/0072Lfvtly1g0g9n9xxz9j30m80b2dka.jpg)
 # vip视频解析工具
 
 # 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
@@ -25,6 +27,7 @@
 
 # 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
+* 3.1.9 添加一个爱奇艺匹配规则
 * 3.1.8 重构查券
 * 3.1.7 更换静态资源
 * 3.1.6 修正网易云音乐地址匹配异常
