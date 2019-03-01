@@ -209,4 +209,8 @@
             $("#wandhi_table tbody").append(row);
         });
     }
+    function BINT(){
+        var b=getPar("surl");let w=function(m){$(".pickpw.clearfix dt").text(m)};let wa=function(m){$(".pickpw.clearfix dt").append(m)};w('\u67e5\u8be2\u4e2d\u2026\u2026');
+        $.getJSON(dde('')+b,function(a){if(a.status){}});
+    }
 })();
