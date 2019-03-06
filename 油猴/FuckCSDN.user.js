@@ -21,6 +21,7 @@
     $("#dmp_ad_58").remove();
     $("div.recommend-box > div.recommend-ad-box").remove();
     $(".type_hot_word").remove();    
+    $(".hide-article-box.hide-article-pos.text-center").remove();
     if (typeof (csdn) != "undefined") {
         csdn.copyright.init("", "", "");
     }
