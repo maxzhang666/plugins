@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CSDN网页优化，自动展开，去广告，免登陆，剪切板净化 2018-12-13可用
 // @namespace    http://www.wandhi.com/
-// @version      1.1
+// @version      1.2
 // @description  CSDN网页优化，自动展开，去广告，免登陆，剪切板净化
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
