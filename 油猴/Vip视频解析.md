@@ -35,6 +35,7 @@
 
 # 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
+* 3.2.1 修复音乐匹配相关问题,匹配手机版
 * 3.2.0 优化悬浮按钮，使其可以贴边
 * 3.1.9 添加一个爱奇艺匹配规则
 * 3.1.8 重构查券

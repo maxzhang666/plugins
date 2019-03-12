@@ -1,10 +1,12 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-02-25 更新，报错请及时反馈
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-03-12 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
-// @version      3.2.0
+// @version      3.2.1
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
+// @include      *://m.youku.com/v*
+// @include      *://m.youku.com/a*
 // @match        *://v.youku.com/v_show/*
 // @match        *://*.iqiyi.com/v_*
 // @match        *://*.iqiyi.com/w_*
@@ -14,6 +16,7 @@
 // @match        *://*.le.com/ptv/vplay/*
 // @match        *://v.qq.com/x/cover/*
 // @match        *://v.qq.com/x/page/*
+// @include      *://v.qq.com/play*
 // @match        *://*.tudou.com/listplay/*
 // @match        *://*.tudou.com/albumplay/*
 // @match        *://*.tudou.com/programs/view/*
@@ -31,7 +34,7 @@
 // @match        *://item.taobao.com/*
 // @match        *://detail.tmall.com/*
 // @match        *://item.jd.com/*
-// @match        *://music.163.com/*
+// @match        *://music.163.com/song*
 // @match        *://y.qq.com/*
 // @match        *://www.kugou.com/*
 // @match        *://www.kuwo.cn/*
@@ -126,7 +129,7 @@
 
             }else
             {
-                window.open('http://music.wandhi.com/?url=' + currentUrl);
+                window.open('http://music.wandhi.com/?url=' + encodeURIComponent(currentUrl));
             }
         });
         $('body').on('click', '[data-cat=search]', function () {
