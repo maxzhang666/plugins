@@ -5,8 +5,8 @@
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
-// @include      *://m.youku.com/v*
-// @include      *://m.youku.com/a*
+// @match      *://m.youku.com/v*
+// @match      *://m.youku.com/a*
 // @match        *://v.youku.com/v_show/*
 // @match        *://*.iqiyi.com/v_*
 // @match        *://*.iqiyi.com/w_*
@@ -16,7 +16,7 @@
 // @match        *://*.le.com/ptv/vplay/*
 // @match        *://v.qq.com/x/cover/*
 // @match        *://v.qq.com/x/page/*
-// @include      *://v.qq.com/play*
+// @match      *://v.qq.com/play*
 // @match        *://*.tudou.com/listplay/*
 // @match        *://*.tudou.com/albumplay/*
 // @match        *://*.tudou.com/programs/view/*
