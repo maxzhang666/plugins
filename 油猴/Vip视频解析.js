@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-04-11 更新，报错请及时反馈
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-04-15 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
-// @version      3.2.3
+// @version      3.2.4
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
@@ -191,7 +191,7 @@
             drags.down = !1, $(document).off("mousemove")
         });
         $('body').on('click', '[data-cat=process]', function () {
-            window.open('http://tv.wandhi.com/go.html?url=' + encodeURIComponent(currentUrl));
+            window.open('http://tv.wandhi.com/go.html?url=' + encodeURIComponent(window.location.href));
         });
         $('body').on('click', '[data-cat=search]', function () {
             window.open('http://tv.wandhi.com/');
@@ -238,27 +238,5 @@
         $('head').append($('<link rel="stylesheet" href="' + url + '">'));
     }
 
-    function TINT() {
-        var bid = getPar('id');
-        var api = '/api/tb/info/' + bid;
-        appendCss(dde("JTJGJTJGY2RuLndhbmRoaS5jb20lMkZzdHlsZSUyRmV4dGVuc3Rpb24lMkZodWkuc3R5bGUuY3Nz"));
-        var init = "<div id='wandhi_div'><table class='wandhi_tab' id='wandhi_table'><thead><tr><th><b onclick=window.open(dde('aHR0cCUzQSUyRiUyRnd3dzMuaHVpemhlay5jb20=')) style='cursor:pointer'>\u4f18\u60e0\u5238</b></th><th>\u5238\u540e</th><th>\u6709 \u6548 \u671f</th><th>\u64cd\u4f5c</th></tr></thead><tr><td colspan='4'>\u6b63\u5728\u67e5\u8be2\u4f18\u60e0\u4fe1\u606f\uff0c\u8bf7\u7a0d\u5019...</td></tr></table></div>";
-        $('#J_LinkBasket').parent().after(init);
-        $('.J_LinkAdd').parent().after(init);
-        if (reTaoBao.test(currentUrl)) {
-            $('#wandhi_table').addClass('wandhi_tab_taobao');
-        } else {
-            $('#wandhi_table').addClass('wandhi_tab_tmall');
-        }
-        $.getJSON(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29t') + api, function (d) {
-            $("#wandhi_table tbody tr").remove();
-            var row = "";
-            if (d.code) {
-                row = "<tr><td>" + d.data.quan_context + "</td><td>" + d.data.after_price + "</td><td>" + d.data.quan_time + "</td><td><b onclick=window.open(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29tJTJGcmVkaXIlM0Z1cmwlM0Q=')+'" + d.data.quan_link + "') style='cursor:pointer'>领取</b></td></tr>";
-            } else {
-                row = "<tr><td colspan='4'>\u8fd9\u4e2a\u5546\u54c1\u6ca1\u6709\u8d85\u503c\u4f18\u60e0\u5238\uff0c\u53bb<b onclick=window.open(dde('aHR0cCUzQSUyRiUyRnd3dzMuaHVpemhlay5jb20=')) style='cursor:pointer'>\u8fd9\u91cc</b>或<b onclick=window.open(dde('aHR0cCUzQSUyRiUyRnd3dzIuaHVpemhlay5jb20=')) style='cursor:pointer'>\u8fd9\u91cc</b>\u627e\u627e\uff0c\u6216\u8005 <b onclick=window.open(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29tJTJGc2hvdXFp')) style='cursor:pointer'>\u8bd5\u8bd5\u624b\u6c14</b>。</td></tr>";
-            }
-            $("#wandhi_table tbody").append(row);
-        });
-    }
+    function TINT() {var bid = getPar('id');var api = '/api/tb/info/' + bid;appendCss(dde("JTJGJTJGY2RuLndhbmRoaS5jb20lMkZzdHlsZSUyRmV4dGVuc3Rpb24lMkZodWkuc3R5bGUuY3Nz"));var init = "<div id='wandhi_div'><table class='wandhi_tab' id='wandhi_table'><thead><tr><th><b onclick=window.open(dde('aHR0cCUzQSUyRiUyRnd3dzMuaHVpemhlay5jb20=')) style='cursor:pointer'>\u4f18\u60e0\u5238</b></th><th>\u5238\u540e</th><th>\u6709 \u6548 \u671f</th><th>\u64cd\u4f5c</th></tr></thead><tr><td colspan='4'>\u6b63\u5728\u67e5\u8be2\u4f18\u60e0\u4fe1\u606f\uff0c\u8bf7\u7a0d\u5019...</td></tr></table></div>";$('#J_LinkBasket').parent().parent().prepend(init);$('.J_LinkAdd').parent().parent().prepend(init);if (reTaoBao.test(currentUrl)) {$('#wandhi_table').addClass('wandhi_tab_taobao');} else {$('#wandhi_table').addClass('wandhi_tab_tmall');}$.getJSON(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29t') + api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";    if (d.code) {row = "<tr><td>" + d.data.quan_context + "</td><td>" + d.data.after_price + "</td><td>" + d.data.quan_time + "</td><td><b onclick=window.open(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29tJTJGcmVkaXIlM0Z1cmwlM0Q=')+'" + d.data.quan_link + "') style='cursor:pointer'>领取</b></td></tr>";} else {row = "<tr><td colspan='4'>\u8fd9\u4e2a\u5546\u54c1\u6ca1\u6709\u8d85\u503c\u4f18\u60e0\u5238\uff0c\u53bb<b onclick=window.open(dde('aHR0cCUzQSUyRiUyRnd3dzMuaHVpemhlay5jb20=')) style='cursor:pointer'>\u8fd9\u91cc</b>或<b onclick=window.open(dde('aHR0cCUzQSUyRiUyRnd3dzIuaHVpemhlay5jb20=')) style='cursor:pointer'>\u8fd9\u91cc</b>\u627e\u627e\uff0c\u6216\u8005 <b onclick=window.open(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29tJTJGc2hvdXFp')) style='cursor:pointer'>\u8bd5\u8bd5\u624b\u6c14</b>。</td></tr>";}$("#wandhi_table tbody").append(row);});}
 })();

@@ -2,12 +2,14 @@
 ![](https://ws1.sinaimg.cn/large/0072Lfvtly1g0g9n9xxz9j30m80b2dka.jpg)
 # 反馈说明
 > 反馈问题请按照以下格式进行：
-
+> 反馈时请给予“**Good**！”评价，并附上需要支持的网址，以及你所期望的需求！
+> 反馈时请给予“**Good**！”评价，并附上需要支持的网址，以及你所期望的需求！
+> 反馈时请给予“**Good**！”评价，并附上需要支持的网址，以及你所期望的需求！
 ## 问题网址(**重要**)：
 ## 问题描述(**重要**)：
 ## 问题图片(**重要**)：
 
- 最后，反馈时希望能给予“**Good**！”评价，并附上需要支持的网址，以及你所期望的需求！
+ 最后，反馈时请给予“**Good**！”评价，并附上需要支持的网址，以及你所期望的需求！
 # vip视频解析工具
 
 # 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
@@ -35,6 +37,7 @@
 
 # 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
+* 3.2.3 修正连续剧选集问题
 * 3.2.3 添加一个搜狐匹配规则
 * 3.2.2 移除无效引用
 * 3.2.1 修复音乐匹配相关问题,匹配手机版
