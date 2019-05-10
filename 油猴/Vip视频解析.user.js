@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-04-30 更新，报错请及时反馈
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-05-10 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
 // @homepage     https://www.wandhi.com/post-647.html
 // @supportURL   https://www.wandhi.com/post-647.html
-// @version      3.2.5
+// @version      3.2.6
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
-// @match      *://m.youku.com/v*
-// @match      *://m.youku.com/a*
+// @match        *://m.youku.com/v*
+// @match        *://m.youku.com/a*
 // @match        *://v.youku.com/v_show/*
 // @match        *://*.iqiyi.com/v_*
 // @match        *://*.iqiyi.com/w_*
@@ -27,8 +27,7 @@
 // @match        *://*.acfun.cn/v/*
 // @match        *://*.bilibili.com/video/*
 // @match        *://*.bilibili.com/anime/*
-// @match        *://vip.pptv.com/show/*
-// @match        *://v.pptv.com/show/*
+// @match        *://*.pptv.com/show/*
 // @match        *://v.yinyuetai.com/video/*
 // @match        *://v.yinyuetai.com/playlist/*
 // @match        *://*.wasu.cn/Play/show/*
@@ -37,6 +36,7 @@
 // @match        *://detail.tmall.com/*
 // @match        *://item.jd.com/*
 // @match        *://music.163.com/song*
+// @match        *://music.163.com/m/song*
 // @match        *://y.qq.com/*
 // @match        *://www.kugou.com/*
 // @match        *://www.kuwo.cn/*
