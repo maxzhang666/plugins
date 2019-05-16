@@ -37,6 +37,7 @@
 
 # 交流群：[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
+* 3.2.7 增加上学吧答案展示
 * 3.2.6 修正链接匹配规则
 * 3.2.5 修正已知问题
 * 3.2.4 修正连续剧选集问题

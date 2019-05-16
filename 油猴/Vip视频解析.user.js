@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-05-10 更新，报错请及时反馈
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-05-16 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
 // @homepage     https://www.wandhi.com/post-647.html
 // @supportURL   https://www.wandhi.com/post-647.html
-// @version      3.2.6
-// @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询
+// @version      3.2.7
+// @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询，免费查看上学吧答案
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
 // @match        *://m.youku.com/v*
@@ -46,11 +46,19 @@
 // @match        *://www.lizhi.fm/*
 // @match        *://music.migu.cn/*
 // @match        *://www.ximalaya.com/*
+// @match        *://www.shangxueba.com/ask/*.html
 // @require      https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js
 // @require      https://greasyfork.org/scripts/373336-layer-wandhi/code/layer_wandhi.js?version=637587
 // @grant        GM_setClipboard
 // @run-at       document-end
 // @grant        unsafeWindow
+// @grant        GM_xmlhttpRequest
+// @grant        GM_info
+// @grant        GM.getValue
+// @grant        GM.setValue
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_notification
 // ==/UserScript==
 
 (function () {
@@ -81,6 +89,7 @@
 	var reLZ = /lizhi/i;
 	var reMiGu = /migu/i;
 	var reXMLY = /ximalaya/i;
+	var reSXB = /shangxueba/i;
     var html='';
     var name='';
     if(reWY.test(currentUrl)||reQQ.test(currentUrl)||reKG.test(currentUrl)||reKW.test(currentUrl)||reXM.test(currentUrl)||reBD.test(currentUrl)||reQT.test(currentUrl)||reLZ.test(currentUrl)||reMiGu.test(currentUrl)||reXMLY.test(currentUrl))
@@ -173,6 +182,36 @@
         var keywords = $(".sku-name").text().trim();
         $("#choose-btns").prepend('<a href="javascript:;" class="btn-special1 btn-lg btn-yhj"><span class="">\u67e5\u8be2\u4f18\u60e0\u5238</span></a>');
         $(".btn-yhj").on('click', function () { window.open("http://jd.huizhek.com/?ah=total&kw=" + encodeURIComponent(keywords)); });
+    }else if(reSXB.test(currentUrl)){
+        var sidenav = '<svg width="0" height="0"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"></feColorMatrix><feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite></filter></defs></svg><div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" class="aside-menu" title="\u6309\u4f4f\u62d6\u52a8">VIP</label><a href="javascript:void(0)" title="\u67e5\u770b\u7b54\u6848" data-cat="search" class="menu-item menu-line menu-first">\u67e5\u770b<br>\u7b54\u6848</a><a href="javascript:void(0)" title="\u6253\u8d4f\u4f5c\u8005" data-cat="process" class="menu-item menu-line menu-second">\u6253\u8d4f<br>\u4f5c\u8005</a><a href="javascript:void(0)" title="\u7edd\u4e16\u597d\u5238" data-cat="tb" class="menu-item menu-line menu-third">\u7edd\u4e16<br>\u597d\u5238</a><a href="javascript:void(0)" title="\u4eac\u4e1c\u597d\u5238" data-cat="jd" class="menu-item menu-line menu-fourth">\u4eac\u4e1c<br>\u597d\u5238</a></div>';
+        $("body").append(sidenav).append($('<link rel="stylesheet" href="//cdn.wandhi.com/style/tv/asidenav.css">')).append($('<link rel="stylesheet" href="https://lib.baomitu.com/layer/3.1.1/theme/default/layer.css">'));
+        var ua = navigator.userAgent;
+        /Safari|iPhone/i.test(ua) && 0 == /chrome/i.test(ua) && $("#aside-nav").addClass("no-filter");
+        var drags = { down: !1, x: 0, y: 0, winWid: 0, winHei: 0, clientX: 0, clientY: 0 }, asideNav = $("#aside-nav")[0], getCss = function (a, e) { return a.currentStyle ? a.currentStyle[e] : document.defaultView.getComputedStyle(a, !1)[e] };
+        $("body").on("mousedown","#aside-nav", function (a) {
+            drags.down = !0, drags.clientX = a.clientX, drags.clientY = a.clientY, drags.x = getCss(this, "right"), drags.y = getCss(this, "top"), drags.winHei = $(window).height(), drags.winWid = $(window).width(), $(document).on("mousemove", function (a) {
+                if (drags.winWid > 640 && (a.clientX < 120 || a.clientX > drags.winWid - 50))
+                    return !1;
+                if (a.clientY < 180 || a.clientY > drags.winHei - 120)
+                    return !1;
+                var e = a.clientX - drags.clientX,
+                    t = a.clientY - drags.clientY;
+                asideNav.style.top = parseInt(drags.y) + t + "px";
+                asideNav.style.right = parseInt(drags.x) - e + "px";
+            })
+        }).on("mouseup","#aside-nav", function () {
+            drags.down = !1, $(document).off("mousemove")
+        });
+        $('body').on('click', '[data-cat=process]', function () {
+            layer.open({type: 1,title: '\u8bf7\u6211\u559d\u4e00\u676f',shadeClose: true,area: '800px',content: '<img src="https://i.loli.net/2019/05/14/5cda672add6f594934.jpg">'});
+        });
+        $('body').on('click', '[data-cat=search]', function () {SXB();});
+        $('body').on('click', '[data-cat=tb]', function () {
+            window.open('http://www3.huizhek.com/');
+        });
+        $('body').on('click', '[data-cat=jd]', function () {
+            window.open('http://jd.huizhek.com');
+        });
     }
     function loader()
     {
@@ -184,4 +223,8 @@
     function getPar(a) {var b = location.search.match(new RegExp("[\?\&]" + a + "=([^\&]+)", "i"));if (b == null || b.length < 1) {return "";}return b[1];}
     function appendCss(url){$('head').append($('<link rel="stylesheet" href="'+url+'">'));}
     function TINT() {var bid = getPar('id');var api = '/api/tb/infos/' + bid;appendCss(dde("JTJGJTJGY2RuLndhbmRoaS5jb20lMkZzdHlsZSUyRmV4dGVuc3Rpb24lMkZodWkuc3R5bGUuY3Nz"));var init = "<div id='wandhi_div'><table class='wandhi_tab' id='wandhi_table'><thead><tr><th><b onclick=window.open(dde('aHR0cCUzQSUyRiUyRnd3dzMuaHVpemhlay5jb20=')) style='cursor:pointer'>\u4f18\u60e0\u5238</b></th><th>\u5238\u540e</th><th>\u6709 \u6548 \u671f</th><th>\u64cd\u4f5c</th></tr></thead><tr><td colspan='4'>\u6b63\u5728\u67e5\u8be2\u4f18\u60e0\u4fe1\u606f\uff0c\u8bf7\u7a0d\u5019...</td></tr></table></div>";$('#J_LinkBasket').parent().parent().prepend(init);$('.J_LinkAdd').parent().parent().prepend(init);if (reTaoBao.test(currentUrl)) {$('#wandhi_table').addClass('wandhi_tab_taobao');} else {$('#wandhi_table').addClass('wandhi_tab_tmall');}$.getJSON(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29t') + api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";if (d.code) {d.data.forEach(e => {row+="<tr><td>" + e.quan_context + "</td><td>" + e.after_price + "</td><td>" + e.quan_time + "</td><td><b onclick=window.open(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29tJTJGcmVkaXIlM0Z1cmwlM0Q=')+'" + e.quan_link + "') style='cursor:pointer'>领取</b></td></tr>";});} else {row = "<tr><td colspan='4'>\u8fd9\u4e2a\u5546\u54c1\u6ca1\u6709\u8d85\u503c\u4f18\u60e0\u5238\uff0c\u53bb<b onclick=window.open(dde('aHR0cCUzQSUyRiUyRnd3dzMuaHVpemhlay5jb20=')) style='cursor:pointer'>\u8fd9\u91cc</b>或<b onclick=window.open(dde('aHR0cCUzQSUyRiUyRnd3dzIuaHVpemhlay5jb20=')) style='cursor:pointer'>\u8fd9\u91cc</b>\u627e\u627e\uff0c\u6216\u8005 <b onclick=window.open(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29tJTJGc2hvdXFp')) style='cursor:pointer'>\u8bd5\u8bd5\u624b\u6c14</b>。</td></tr>";}$("#wandhi_table tbody").append(row);});}
+    var answer="-1";
+    function SXB(){var id=$("#Hidd_id").val();if(!id){Msg("\u6570\u636e\u5f02\u5e38\u8bf7\u8054\u7cfb\u4f5c\u8005");return;}var api='/api/tools/sxb/'+id;if(answer!="-1"){}$.getJSON(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29t') + api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";if (d.code) {answer=d.data;showAnswer(answer);}else{Msg("\u672a\u53d1\u73b0\u7b54\u6848");}});}    
+    function showAnswer(h){layer.closeAll();layer.open({type: 1,title: '\u7b54\u6848',area: ['400px', '300px'],shade: 0,offset: 'lb',maxmin: true,content: h});}
+    function Msg(msg){layer.closeAll();layer.msg(msg, {icon: 5});}
 })();
