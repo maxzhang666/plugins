@@ -39,7 +39,9 @@
 > A:优惠券收集自淘宝官方，可以放心食用
 
 # 交流群：
-## [**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
+## 一群[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
+
+## 二群[**655341576**](https://shang.qq.com/wpa/qunwpa?idkey=dd0275fbf9149b71e4f2f4e44902b552c846e9a2234f68eaca35a442510f061b) 暗号：玩的嗨
 
 * 3.2.7 增加上学吧答案展示
 * 3.2.6 修正链接匹配规则
