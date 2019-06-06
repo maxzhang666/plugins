@@ -81,12 +81,13 @@
     var reKG = /kugou(.*)song/i;
     var reKW = /kuwo(.*)yinyue/i;
     var reXM = /xiami/i;
-    var reBD = /baidu.com/i;
+    var reBD = /taihe.com/i;
     var reQT = /qingting/i;
     var reLZ = /lizhi/i;
     var reMiGu = /migu/i;
     var reXMLY = /ximalaya/i;
     var reSXB = /shangxueba/i;
+    https://m.youku.com/video/id_XMzE2OTY2MDE2.html?tpa=dW5pb25faWQ9MTAzNzUzXzEwMDAwMV8wMV8wMQ&refer=sousuotoufang_market.qrwang_00002944_000000_QJFFvi_19031900&source=https%3A%2F%2Fwww.baidu.com%2Fs%3Fwd%3D%25E9%2593%25B6%25E9%25AD%2582%26ie%3DUTF-8
     var html = '';
     var name = '';
     var t = $.now();
@@ -146,7 +147,9 @@
                     });
                 }
 
-            } else {
+            } else if("taihe.com".test(currentUrl)){
+                window.open('http://music.wandhi.com/?url=' + encodeURIComponent(currentUrl.replace("taihe","baidu")));
+            }else{
                 window.open('http://music.wandhi.com/?url=' + encodeURIComponent(currentUrl));
             }
         });

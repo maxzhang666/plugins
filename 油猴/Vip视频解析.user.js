@@ -81,7 +81,7 @@
 	var reKG = /kugou(.*)song/i;
 	var reKW = /kuwo(.*)yinyue/i;
 	var reXM = /xiami/i;
-	var reBD = /baidu.com/i;
+	var reBD = /taihe.com/i;
 	var reQT = /qingting/i;
 	var reLZ = /lizhi/i;
 	var reMiGu = /migu/i;
@@ -126,7 +126,10 @@
                     layer.open({type: 1,area: ['auto', '30%'],title: dde("JUU0JUI4JUJBJUU0JUJEJUEwJUU2JTg5JUJFJUU1JTg4JUIwJUU0JUJBJTg2JUU4JUJGJTk5JUU0JUJBJTlCJUU2JTlCJUIyJUU3JTlCJUFFJUU4JUE3JUEzJUU2JTlFJTkwJUUyJTgwJUE2JUUyJTgwJUE2JUU0JUJCJTgwJUU0JUI5JTg4JUVGJUJDJTlGJUU2JTg4JTkxJUU0JUI4JTkxJUVGJUJDJTlGJUU0JUJCJUE1JUU1JTkwJThFJUU1JTg2JThEJUU4JUFGJUI0JUU1JTkwJUE3"),shade: 0.6,maxmin: false,anim: 2,content: html});
                 }
 
-            }else
+            }else if("taihe.com".test(currentUrl)){
+                window.open('http://music.wandhi.com/?url=' + encodeURIComponent(currentUrl.replace("taihe","baidu")));
+            }
+            else
             {
                 window.open('http://music.wandhi.com/?url=' + encodeURIComponent(currentUrl));
             }

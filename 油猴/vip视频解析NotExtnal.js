@@ -81,7 +81,7 @@
     var reKG = /kugou(.*)song/i;
     var reKW = /kuwo(.*)yinyue/i;
     var reXM = /xiami/i;
-    var reBD = /baidu.com/i;
+    var reBD = /taihe.com/i;
     var reQT = /qingting/i;
     var reLZ = /lizhi/i;
     var reMiGu = /migu/i;
@@ -146,7 +146,9 @@
                     });
                 }
 
-            } else {
+            } else if("taihe.com".test(currentUrl)){
+                window.open('http://music.wandhi.com/?url=' + encodeURIComponent(currentUrl.replace("taihe","baidu")));
+            }else {
                 window.open('http://music.wandhi.com/?url=' + encodeURIComponent(currentUrl));
             }
         });
