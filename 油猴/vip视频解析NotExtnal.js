@@ -124,6 +124,7 @@
             drags.down = !1, $(document).off("mousemove")
         });
         $('body').on('click', '[data-cat=process]', function () {
+            InitCurrentUrl();
             if (reXMLY.test(currentUrl)) {
                 if (__INITIAL_STATE__.SoundDetailPage != undefined) {
                     window.open('http://music.wandhi.com/?id=' + __INITIAL_STATE__.SoundDetailPage.trackId + '&type=ximalaya');
@@ -258,4 +259,5 @@
     function showAnswer(h){layer.closeAll();layer.open({type: 1,title: '\u7b54\u6848',area: ['400px', '300px'],shade: 0,offset: 'lb',maxmin: true,content: h});}
     function Msg(msg){layer.closeAll();layer.msg(msg, {icon: 5});}
     function convert(str){return decodeURIComponent(window.atob(a));}
+    function InitCurrentUrl(){currentUrl = window.location.href;}
 })();

@@ -111,6 +111,7 @@
             drags.down = !1, $(document).off("mousemove")
         });
         $('body').on('click', '[data-cat=process]', function () {
+            InitCurrentUrl();
             if(reXMLY.test(currentUrl))
             {
                 if(__INITIAL_STATE__.SoundDetailPage!=undefined)
@@ -223,5 +224,6 @@
     var answer="-1";
     function SXB(){var id=$("#Hidd_id").val();if(!id){Msg("\u6570\u636e\u5f02\u5e38\u8bf7\u8054\u7cfb\u4f5c\u8005");return;}var api='/api/tools/sxb/'+id;if(answer!="-1"){}$.getJSON(dde('aHR0cHMlM0ElMkYlMkZ3d3cueWh4eGMuY29t') + api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";if (d.code) {answer=d.data;showAnswer(answer);}else{Msg("\u672a\u53d1\u73b0\u7b54\u6848");}});}    
     function showAnswer(h){layer.closeAll();layer.open({type: 1,title: '\u7b54\u6848',area: ['400px', '300px'],shade: 0,offset: 'lb',maxmin: true,content: h});}
-    function Msg(msg){layer.closeAll();layer.msg(msg, {icon: 5});}
+    function Msg(msg){layer.closeAll();layer.msg(msg, {icon: 5});}    
+    function InitCurrentUrl(){currentUrl = window.location.href;}
 })();
