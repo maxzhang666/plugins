@@ -86,8 +86,7 @@
     var reLZ = /lizhi/i;
     var reMiGu = /migu/i;
     var reXMLY = /ximalaya/i;
-    var reSXB = /shangxueba/i;
-    $("body").append(sidenav).append($('<link rel="stylesheet" href="//cdn.wandhi.com/style/tv/asidenav.css">'))
+    var reSXB = /shangxueba/i;    
     if (reWY.test(currentUrl) || reQQ.test(currentUrl) || reKG.test(currentUrl) || reKW.test(currentUrl) || reXM.test(currentUrl) || reBD.test(currentUrl) || reQT.test(currentUrl) || reLZ.test(currentUrl) || reMiGu.test(currentUrl) || reXMLY.test(currentUrl)) {
         var menus=[{title:'\u7535\u5F71\u641C\u7D22',show:'\u7535\u5F71<br>\u641C\u7D22',type:'search'},{title:'\u97F3\u4E50\u4E0B\u8F7D',show:'\u97F3\u4E50<br>\u4E0B\u8F7D',type:'process'},{title:'\u7EDD\u4E16\u597D\u5238',show:'\u7EDD\u4E16<br>\u597D\u5238',type:'tb'},{title:'\u4EAC\u4E1C\u597D\u5238',show:'\u4EAC\u4E1C<br>\u597D\u5238',type:'jd'}];
         var f=function(){
