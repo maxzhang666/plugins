@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-06-06 更新，报错请及时反馈
+// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-06-07 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
-// @version      3.3.1
+// @version      3.3.2
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
@@ -87,69 +87,32 @@
     var reMiGu = /migu/i;
     var reXMLY = /ximalaya/i;
     var reSXB = /shangxueba/i;
-    https://m.youku.com/video/id_XMzE2OTY2MDE2.html?tpa=dW5pb25faWQ9MTAzNzUzXzEwMDAwMV8wMV8wMQ&refer=sousuotoufang_market.qrwang_00002944_000000_QJFFvi_19031900&source=https%3A%2F%2Fwww.baidu.com%2Fs%3Fwd%3D%25E9%2593%25B6%25E9%25AD%2582%26ie%3DUTF-8
-    var html = '';
-    var name = '';
     var t = $.now();
     $("body").append(sidenav).append($('<link rel="stylesheet" href="//cdn.wandhi.com/style/tv/asidenav.css">'))
     if (reWY.test(currentUrl) || reQQ.test(currentUrl) || reKG.test(currentUrl) || reKW.test(currentUrl) || reXM.test(currentUrl) || reBD.test(currentUrl) || reQT.test(currentUrl) || reLZ.test(currentUrl) || reMiGu.test(currentUrl) || reXMLY.test(currentUrl)) {
-        var sidenav = '<svg width="0" height="0"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"></feColorMatrix><feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite></filter></defs></svg><div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" class="aside-menu" title="\u6309\u4f4f\u62d6\u52a8">VIP</label><a href="javascript:void(0)" title="\u7535\u5f71\u641c\u7d22" data-cat="search" class="menu-item menu-line menu-first">\u7535\u5f71<br>\u641c\u7d22</a><a href="javascript:void(0)" title="\u97f3\u4e50\u4e0b\u8f7d" data-cat="process" class="menu-item menu-line menu-second">\u97f3\u4e50<br>\u4e0b\u8f7d</a><a href="javascript:void(0)" title="\u7edd\u4e16\u597d\u5238" data-cat="tb" class="menu-item menu-line menu-third">\u7edd\u4e16<br>\u597d\u5238</a><a href="javascript:void(0)" title="\u4eac\u4e1c\u597d\u5238" data-cat="jd" class="menu-item menu-line menu-fourth">\u4eac\u4e1c<br>\u597d\u5238</a></div>';
-        $("body").append(sidenav).append($('<link rel="stylesheet" href="//cdn.wandhi.com/style/tv/asidenav.css">')).append($('<link rel="stylesheet" href="https://lib.baomitu.com/layer/3.1.1/theme/default/layer.css">'));
-        var ua = navigator.userAgent;
-        /Safari|iPhone/i.test(ua) && 0 == /chrome/i.test(ua) && $("#aside-nav").addClass("no-filter");
-        var drags = {
-                down: !1,
-                x: 0,
-                y: 0,
-                winWid: 0,
-                winHei: 0,
-                clientX: 0,
-                clientY: 0
-            },
-            asideNav = $("#aside-nav")[0],
-            getCss = function (a, e) {
-                return a.currentStyle ? a.currentStyle[e] : document.defaultView.getComputedStyle(a, !1)[e]
-            };
-        $("body").on("mousedown", "#aside-nav", function (a) {
-            drags.down = !0, drags.clientX = a.clientX, drags.clientY = a.clientY, drags.x = getCss(this, "right"), drags.y = getCss(this, "top"), drags.winHei = $(window).height(), drags.winWid = $(window).width(), $(document).on("mousemove", function (a) {
-                if (drags.winWid > 640 && (a.clientX < 120 || a.clientX > drags.winWid - 50))
-                    return !1;
-                if (a.clientY < 180 || a.clientY > drags.winHei - 120)
-                    return !1;
-                var e = a.clientX - drags.clientX,
-                    t = a.clientY - drags.clientY;
-                asideNav.style.top = parseInt(drags.y) + t + "px";
-                asideNav.style.right = parseInt(drags.x) - e + "px";
-            })
-        }).on("mouseup", "#aside-nav", function () {
-            drags.down = !1, $(document).off("mousemove")
-        });
+        var menus=[{title:'\u7535\u5F71\u641C\u7D22',show:'\u7535\u5F71<br>\u641C\u7D22',type:'search'},{title:'\u97F3\u4E50\u4E0B\u8F7D',show:'\u97F3\u4E50<br>\u4E0B\u8F7D',type:'process'},{title:'\u7EDD\u4E16\u597D\u5238',show:'\u7EDD\u4E16<br>\u597D\u5238',type:'tb'},{title:'\u4EAC\u4E1C\u597D\u5238',show:'\u4EAC\u4E1C<br>\u597D\u5238',type:'jd'}];
+        var f=function(){
         $('body').on('click', '[data-cat=process]', function () {
             InitCurrentUrl();
-            if (reXMLY.test(currentUrl)) {
-                if (__INITIAL_STATE__.SoundDetailPage != undefined) {
-                    window.open('http://music.wandhi.com/?id=' + __INITIAL_STATE__.SoundDetailPage.trackId + '&type=ximalaya');
-                } else {
+            if(reXMLY.test(currentUrl))
+            {
+                if(__INITIAL_STATE__.SoundDetailPage!=undefined)
+                {
+                    window.open('http://music.wandhi.com/?id='+__INITIAL_STATE__.SoundDetailPage.trackId+'&type=ximalaya');
+                }else
+                {
                     layer.closeAll();
-                    var html = '<div style="padding:0px 50px 0px 50px;"><ul class="sound-list dOi2">';
-                    $.each(__INITIAL_STATE__.AlbumDetailTrackList.tracksInfo.tracks, function (index, item) {
-                        html += '<li class="dOi2"><a href="http://music.wandhi.com/?id=' + item.trackId + '&type=ximalaya" target="_blank">' + item.title + '</a></li>';
-                    });
-                    html += '</ul></div>';
-                    layer.open({
-                        type: 1,
-                        area: ['auto', '30%'],
-                        title: dde("JUU0JUI4JUJBJUU0JUJEJUEwJUU2JTg5JUJFJUU1JTg4JUIwJUU0JUJBJTg2JUU4JUJGJTk5JUU0JUJBJTlCJUU2JTlCJUIyJUU3JTlCJUFFJUU4JUE3JUEzJUU2JTlFJTkwJUUyJTgwJUE2JUUyJTgwJUE2JUU0JUJCJTgwJUU0JUI5JTg4JUVGJUJDJTlGJUU2JTg4JTkxJUU0JUI4JTkxJUVGJUJDJTlGJUU0JUJCJUE1JUU1JTkwJThFJUU1JTg2JThEJUU4JUFGJUI0JUU1JTkwJUE3"),
-                        shade: 0.6,
-                        maxmin: false,
-                        anim: 2,
-                        content: html
-                    });
+                    var html='<div style="padding:0px 50px 0px 50px;"><ul class="sound-list dOi2">';
+                    $.each(__INITIAL_STATE__.AlbumDetailTrackList.tracksInfo.tracks,function(index,item){html+='<li class="dOi2"><a href="http://music.wandhi.com/?id='+item.trackId+'&type=ximalaya" target="_blank">'+item.title+'</a></li>';});
+                    html+='</ul></div>';
+                    layer.open({type: 1,area: ['auto', '30%'],title: '\u4E3A\u4F60\u627E\u5230\u4E86\u8FD9\u4E9B\u66F2\u76EE\u89E3\u6790\u2026\u2026\u4EC0\u4E48\uFF1F\u6211\u4E11\uFF1F\u4EE5\u540E\u518D\u8BF4\u5427',shade: 0.6,maxmin: false,anim: 2,content: html});
                 }
 
-            } else if("taihe.com".test(currentUrl)){
+            }else if(/taihe.com/i.test(currentUrl)){
                 window.open('http://music.wandhi.com/?url=' + encodeURIComponent(currentUrl.replace("taihe","baidu")));
-            }else{
+            }
+            else
+            {
                 window.open('http://music.wandhi.com/?url=' + encodeURIComponent(currentUrl));
             }
         });
@@ -161,39 +124,11 @@
         });
         $('body').on('click', '[data-cat=jd]', function () {
             window.open('http://jd.huizhek.com');
-        });
+        });};
+        InitMenu(menus,f);
     } else if (reAqy.test(currentUrl) || reLS.test(currentUrl) || reTX.test(currentUrl) || reTD.test(currentUrl) || reMG.test(currentUrl) || reSH.test(currentUrl) || rePP.test(currentUrl) || reYk.test(currentUrl)) {
-        var sidenav = '<svg width="0" height="0"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"></feColorMatrix><feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite></filter></defs></svg><div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" id="aside-menu" class="aside-menu" title="\u6309\u4f4f\u62d6\u52a8">VIP</label><a href="javascript:void(0)" title="\u7535\u5f71\u641c\u7d22" data-cat="search" class="menu-item menu-line menu-first">\u7535\u5f71<br>\u641c\u7d22</a><a href="javascript:void(0)" title="\u89c6\u9891\u89e3\u6790" data-cat="process" class="menu-item menu-line menu-second">\u89c6\u9891<br>\u89e3\u6790</a><a href="javascript:void(0)" title="\u7edd\u4e16\u597d\u5238" data-cat="tb" class="menu-item menu-line menu-third">\u7edd\u4e16<br>\u597d\u5238</a><a href="javascript:void(0)" title="\u4eac\u4e1c\u597d\u5238" data-cat="jd" class="menu-item menu-line menu-fourth">\u4eac\u4e1c<br>\u597d\u5238</a></div>';
-        $("body").append(sidenav).append($('<link rel="stylesheet" href="//cdn.wandhi.com/style/tv/asidenav.css?v=20190225">'));
-        var ua = navigator.userAgent;
-        /Safari|iPhone/i.test(ua) && 0 == /chrome/i.test(ua) && $("#aside-nav").addClass("no-filter");
-        var drags = {
-                down: !1,
-                x: 0,
-                y: 0,
-                winWid: 0,
-                winHei: 0,
-                clientX: 0,
-                clientY: 0
-            },
-            asideNav = $("#aside-nav")[0],
-            getCss = function (a, e) {
-                return a.currentStyle ? a.currentStyle[e] : document.defaultView.getComputedStyle(a, !1)[e]
-            };
-        $("body").on("mousedown", "#aside-menu", function (a) {
-            drags.down = !0, drags.clientX = a.clientX, drags.clientY = a.clientY, drags.x = getCss(this.parentElement, "right"), drags.y = getCss(this.parentElement, "top"), drags.winHei = $(window).height(), drags.winWid = $(window).width(), $(document).on("mousemove", function (a) {
-                // if (drags.winWid > 640 && (a.clientX < 120 || a.clientX > drags.winWid - 50))
-                //     return !1;
-                // if (a.clientY < 180 || a.clientY > drags.winHei - 120)
-                //     return !1;
-                var e = a.clientX - drags.clientX,
-                    t = a.clientY - drags.clientY;
-                asideNav.style.top = parseInt(drags.y) + t + "px";
-                asideNav.style.right = parseInt(drags.x) - e + "px";
-            })
-        }).on("mouseup", "#aside-menu", function () {
-            drags.down = !1, $(document).off("mousemove")
-        });
+        var menus=[{title:'\u7535\u5F71\u641C\u7D22',show:'\u7535\u5F71<br>\u641C\u7D22',type:'search'},{title:'\u89C6\u9891\u89E3\u6790',show:'\u89C6\u9891<br>\u89E3\u6790',type:'process'},{title:'\u7EDD\u4E16\u597D\u5238',show:'\u7EDD\u4E16<br>\u597D\u5238',type:'tb'},{title:'\u4EAC\u4E1C\u597D\u5238',show:'\u4EAC\u4E1C<br>\u597D\u5238',type:'jd'}];        
+        InitMenu(menus,function(){
         $('body').on('click', '[data-cat=process]', function () {
             window.open('http://tv.wandhi.com/go.html?url=' + encodeURIComponent(window.location.href));
         });
@@ -205,7 +140,7 @@
         });
         $('body').on('click', '[data-cat=jd]', function () {
             window.open('http://jd.huizhek.com');
-        });
+        });})
     } else if (reTaoBao.test(currentUrl) || reTmall.test(currentUrl)) {
         loader();
         TINT();
@@ -216,35 +151,18 @@
             window.open("http://jd.huizhek.com/?ah=total&kw=" + encodeURIComponent(keywords));
         });
     }else if(reSXB.test(currentUrl)){
-        var sidenav = '<svg width="0" height="0"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"></feColorMatrix><feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite></filter></defs></svg><div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" class="aside-menu" title="\u6309\u4f4f\u62d6\u52a8">VIP</label><a href="javascript:void(0)" title="\u67e5\u770b\u7b54\u6848" data-cat="search" class="menu-item menu-line menu-first">\u67e5\u770b<br>\u7b54\u6848</a><a href="javascript:void(0)" title="\u6253\u8d4f\u4f5c\u8005" data-cat="process" class="menu-item menu-line menu-second">\u6253\u8d4f<br>\u4f5c\u8005</a><a href="javascript:void(0)" title="\u7edd\u4e16\u597d\u5238" data-cat="tb" class="menu-item menu-line menu-third">\u7edd\u4e16<br>\u597d\u5238</a><a href="javascript:void(0)" title="\u4eac\u4e1c\u597d\u5238" data-cat="jd" class="menu-item menu-line menu-fourth">\u4eac\u4e1c<br>\u597d\u5238</a></div>';
-        $("body").append(sidenav).append($('<link rel="stylesheet" href="//cdn.wandhi.com/style/tv/asidenav.css">')).append($('<link rel="stylesheet" href="https://lib.baomitu.com/layer/3.1.1/theme/default/layer.css">'));
-        var ua = navigator.userAgent;
-        /Safari|iPhone/i.test(ua) && 0 == /chrome/i.test(ua) && $("#aside-nav").addClass("no-filter");
-        var drags = { down: !1, x: 0, y: 0, winWid: 0, winHei: 0, clientX: 0, clientY: 0 }, asideNav = $("#aside-nav")[0], getCss = function (a, e) { return a.currentStyle ? a.currentStyle[e] : document.defaultView.getComputedStyle(a, !1)[e] };
-        $("body").on("mousedown","#aside-nav", function (a) {
-            drags.down = !0, drags.clientX = a.clientX, drags.clientY = a.clientY, drags.x = getCss(this, "right"), drags.y = getCss(this, "top"), drags.winHei = $(window).height(), drags.winWid = $(window).width(), $(document).on("mousemove", function (a) {
-                if (drags.winWid > 640 && (a.clientX < 120 || a.clientX > drags.winWid - 50))
-                    return !1;
-                if (a.clientY < 180 || a.clientY > drags.winHei - 120)
-                    return !1;
-                var e = a.clientX - drags.clientX,
-                    t = a.clientY - drags.clientY;
-                asideNav.style.top = parseInt(drags.y) + t + "px";
-                asideNav.style.right = parseInt(drags.x) - e + "px";
-            })
-        }).on("mouseup","#aside-nav", function () {
-            drags.down = !1, $(document).off("mousemove")
-        });
-        $('body').on('click', '[data-cat=process]', function () {
-            layer.open({type: 1,title: '\u8bf7\u6211\u559d\u4e00\u676f',shadeClose: true,area: '800px',content: '<img src="https://i.loli.net/2019/05/14/5cda672add6f594934.jpg">'});
-        });
-        $('body').on('click', '[data-cat=search]', function () {SXB();});
-        $('body').on('click', '[data-cat=tb]', function () {
-            window.open('http://www3.huizhek.com/');
-        });
-        $('body').on('click', '[data-cat=jd]', function () {
-            window.open('http://jd.huizhek.com');
-        });
+        var menus=[{title:'\u67E5\u770B\u7B54\u6848',show:'\u67E5\u770B<br>\u7B54\u6848',type:'search'},{title:'\u6253\u8D4F\u4F5C\u8005',show:'\u6253\u8D4F<br>\u4F5C\u8005',type:'process'},{title:'\u7EDD\u4E16\u597D\u5238',show:'\u7EDD\u4E16<br>\u597D\u5238',type:'tb'},{title:'\u4EAC\u4E1C\u597D\u5238',show:'\u4EAC\u4E1C<br>\u597D\u5238',type:'jd'}];
+        InitMenu(menus,function(){
+            $('body').on('click', '[data-cat=process]', function () {
+                layer.open({type: 1,title: '\u8bf7\u6211\u559d\u4e00\u676f',shadeClose: true,area: '800px',content: '<img src="https://i.loli.net/2019/05/14/5cda672add6f594934.jpg">'});
+            });
+            $('body').on('click', '[data-cat=search]', function () {SXB();});
+            $('body').on('click', '[data-cat=tb]', function () {
+                window.open('http://www3.huizhek.com/');
+            });
+            $('body').on('click', '[data-cat=jd]', function () {
+                window.open('http://jd.huizhek.com');
+            });});
     }
 
     function loader() {
@@ -278,4 +196,31 @@
     function showAnswer(h){layer.closeAll();layer.open({type: 1,title: '\u7b54\u6848',area: ['400px', '300px'],shade: 0,offset: 'lb',maxmin: true,content: h});}
     function Msg(msg){layer.closeAll();layer.msg(msg, {icon: 5});}
     function InitCurrentUrl(){currentUrl = window.location.href;}
+    function InitMenu(obj,init){
+        var menusclass=['first','second','third','fourth','fifth'];
+        var str="";
+        $.each(obj,function(i,o){
+            str+='<a href="javascript:void(0)" title="'+o.title+'" data-cat="'+o.type+'" class="menu-item menu-line menu-'+menusclass[i]+'">'+o.show+'</a>';
+        });
+        var sidenav = '<svg width="0" height="0"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"></feColorMatrix><feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite></filter></defs></svg><div class="aside-nav bounceInUp animated" id="aside-nav"><label for="" class="aside-menu" title="\u6309\u4F4F\u62D6\u52A8">VIP</label>'+str+'</div>';
+        $("body").append(sidenav).append($('<link rel="stylesheet" href="//cdn.wandhi.com/style/tv/asidenav.css">')).append($('<link rel="stylesheet" href="https://lib.baomitu.com/layer/3.1.1/theme/default/layer.css">'));
+        var ua = navigator.userAgent;
+        /Safari|iPhone/i.test(ua) && 0 == /chrome/i.test(ua) && $("#aside-nav").addClass("no-filter");
+        var drags = { down: !1, x: 0, y: 0, winWid: 0, winHei: 0, clientX: 0, clientY: 0 }, asideNav = $("#aside-nav")[0], getCss = function (a, e) { return a.currentStyle ? a.currentStyle[e] : document.defaultView.getComputedStyle(a, !1)[e] };
+        $("body").on("mousedown","#aside-nav", function (a) {
+            drags.down = !0, drags.clientX = a.clientX, drags.clientY = a.clientY, drags.x = getCss(this, "right"), drags.y = getCss(this, "top"), drags.winHei = $(window).height(), drags.winWid = $(window).width(), $(document).on("mousemove", function (a) {
+                if (drags.winWid > 640 && (a.clientX < 120 || a.clientX > drags.winWid - 50))
+                    return !1;
+                if (a.clientY < 180 || a.clientY > drags.winHei - 120)
+                    return !1;
+                var e = a.clientX - drags.clientX,
+                    t = a.clientY - drags.clientY;
+                asideNav.style.top = parseInt(drags.y) + t + "px";
+                asideNav.style.right = parseInt(drags.x) - e + "px";
+            })
+        }).on("mouseup","#aside-nav", function () {
+            drags.down = !1, $(document).off("mousemove")
+        });
+        init();
+    }
 })();
