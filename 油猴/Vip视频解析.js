@@ -165,7 +165,6 @@
                 window.open('http://jd.huizhek.com');
             });});
     }else if(reBDY.test(currentUrl)){
-        console.log("跳转百度盘");
         var menus=[{title:'\u79BB\u7EBF\u4E0B\u8F7D',show:'\u79BB\u7EBF<br>\u4E0B\u8F7D',type:'search'},{title:'\u6253\u8D4F\u4F5C\u8005',show:'\u6253\u8D4F<br>\u4F5C\u8005',type:'process'},{title:'\u7EDD\u4E16\u597D\u5238',show:'\u7EDD\u4E16<br>\u597D\u5238',type:'tb'},{title:'\u4EAC\u4E1C\u597D\u5238',show:'\u4EAC\u4E1C<br>\u597D\u5238',type:'jd'}];
         InitMenu(menus,function(){            
             $('body').on('click', '[data-cat=process]', function () {
