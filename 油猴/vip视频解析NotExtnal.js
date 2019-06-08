@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告（全网）,一站式音乐搜索下载 2019-06-08 更新，报错请及时反馈
+// @name         一键VIP视频解析、去广告(全网),一站式音乐搜索下载,上学吧答案显示,百度云离线跳转 2019-06-08 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
-// @version      3.3.3
+// @version      3.3.4
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
@@ -44,6 +44,7 @@
 // @match        *://www.shangxueba.com/ask/*.html
 // @match        *://www.ximalaya.com/*
 // @match        *://www.shangxueba.com/ask/*.html
+// @match        *://pan.baidu.com/s/*
 // @require      https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js
 // @require      https://greasyfork.org/scripts/373336-layer-wandhi/code/layer_wandhi.js?version=637587
 // @grant        GM_setClipboard
@@ -61,6 +62,7 @@
 (function () {
     'use strict';
     var currentUrl = window.location.href;
+    var reBDY=/pan.baidu.com\/s/i;
     var reYk = /youku/i;
     var reAqy = /iqiyi/i;
     var reLS = /le.com/i;
@@ -160,6 +162,21 @@
             $('body').on('click', '[data-cat=jd]', function () {
                 window.open('http://jd.huizhek.com');
             });});
+    }else if(reBDY.test(currentUrl)){
+        console.log("跳转百度盘");
+        var menus=[{title:'\u79BB\u7EBF\u4E0B\u8F7D',show:'\u79BB\u7EBF<br>\u4E0B\u8F7D',type:'search'},{title:'\u6253\u8D4F\u4F5C\u8005',show:'\u6253\u8D4F<br>\u4F5C\u8005',type:'process'},{title:'\u7EDD\u4E16\u597D\u5238',show:'\u7EDD\u4E16<br>\u597D\u5238',type:'tb'},{title:'\u4EAC\u4E1C\u597D\u5238',show:'\u4EAC\u4E1C<br>\u597D\u5238',type:'jd'}];
+        InitMenu(menus,function(){            
+            $('body').on('click', '[data-cat=process]', function () {
+                layer.open({type: 1,title: '\u8bf7\u6211\u559d\u4e00\u676f',shadeClose: true,area: '800px',content: '<img src="http://i1.fuimg.com/500348/6717e02198116ae4s.png">'});
+            });
+            $('body').on('click', '[data-cat=search]', function () {window.location.href=window.location.href.replace('baidu.com','baiduwp.com');});
+            $('body').on('click', '[data-cat=tb]', function () {
+                window.open('https://link.zhihu.com/?target=https://www.yhxxc.com/goto/DUVAFQgZTEEVFAQcDhYKSFkDDh9XCl8=');
+            });
+            $('body').on('click', '[data-cat=jd]', function () {
+                window.open('https://link.zhihu.com/?target=https://www.yhxxc.com/goto/DUVAFQgZTFwGTVhHDxkLV1pIBl5Z');
+            });
+        });
     }
     function getPar(a) {
         var b = location.search.match(new RegExp("[\?\&]" + a + "=([^\&]+)", "i"));
