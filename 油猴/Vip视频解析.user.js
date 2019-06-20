@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告(全网),一站式音乐搜索下载,上学吧答案显示,百度云离线跳转 2019-06-19 更新，报错请及时反馈
+// @name         一键VIP视频解析、去广告(全网),一站式音乐搜索下载,上学吧答案显示,百度云离线跳转 2019-06-20 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
 // @homepage     https://www.wandhi.com/post-647.html
 // @supportURL   https://www.wandhi.com/post-647.html
-// @version      3.3.5
+// @version      3.3.6
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询，免费查看上学吧答案
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
@@ -171,10 +171,10 @@
             });
             $('body').on('click', '[data-cat=search]', function () {window.location.href=window.location.href.replace('baidu.com','baiduwp.com');});
             $('body').on('click', '[data-cat=tb]', function () {
-                window.open('https://link.zhihu.com/?target=https://www.yhxxc.com/goto/DUVAFQgZTEEVFAQcDhYKSFkDDh9XCl8=');
+                window.open('https://link.zhihu.com/?target=https://api.wandhi.com/goto/DUVAFQgZTEEVFAQcDhYKSFkDDh9XCl8=');
             });
             $('body').on('click', '[data-cat=jd]', function () {
-                window.open('https://link.zhihu.com/?target=https://www.yhxxc.com/goto/DUVAFQgZTFwGTVhHDxkLV1pIBl5Z');
+                window.open('https://link.zhihu.com/?target=https://api.wandhi.com/goto/DUVAFQgZTFwGTVhHDxkLV1pIBl5Z');
             });
         });
     }
@@ -185,9 +185,9 @@
     function getPar(a) {var b = location.search.match(new RegExp("[\?\&]" + a + "=([^\&]+)", "i"));if (b == null || b.length < 1) {return "";}return b[1];}
     function appendCss(url){$('head').append($('<link rel="stylesheet" href="'+url+'">'));}
     
-    function TINT() {var h='https://www.yhxxc.com';var bid = getPar('id');var api = '/api/tb/infos/' + bid;appendCss("//cdn.wandhi.com/style/extenstion/hui.style.css");var init = "<div id='wandhi_div'><table class='wandhi_tab' id='wandhi_table'><thead><tr><th><b onclick=window.open('https://link.zhihu.com/?target=http://www3.huizhek.com') style='cursor:pointer'>\u4f18\u60e0\u5238</b></th><th>\u5238\u540e</th><th>\u6709 \u6548 \u671f</th><th>\u64cd\u4f5c</th></tr></thead><tr><td colspan='4'>\u6b63\u5728\u67e5\u8be2\u4f18\u60e0\u4fe1\u606f\uff0c\u8bf7\u7a0d\u5019...</td></tr></table></div>";$('#J_LinkBasket').parent().parent().prepend(init);$('.J_LinkAdd').parent().parent().prepend(init);if (reTaoBao.test(currentUrl)) {$('#wandhi_table').addClass('wandhi_tab_taobao');} else {$('#wandhi_table').addClass('wandhi_tab_tmall');}$.getJSON( h + api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";if (d.code) {d.data.forEach(e => {row+="<tr><td>" + e.quan_context + "</td><td>" + e.after_price + "</td><td>" + e.quan_time + "</td><td><b onclick=window.open(decodeURIComponent('" + e.quan_link + "')) style='cursor:pointer'>领取</b></td></tr>";});} else {row = "<tr><td colspan='4'>\u8fd9\u4e2a\u5546\u54c1\u6ca1\u6709\u8d85\u503c\u4f18\u60e0\u5238</td></tr>";}$("#wandhi_table tbody").append(row);});}
+    function TINT() {var h='https://api.wandhi.com';var bid = getPar('id');var api = '/api/tb/infos/' + bid;appendCss("//cdn.wandhi.com/style/extenstion/hui.style.css");var init = "<div id='wandhi_div'><table class='wandhi_tab' id='wandhi_table'><thead><tr><th><b onclick=window.open('https://link.zhihu.com/?target=http://www3.huizhek.com') style='cursor:pointer'>\u4f18\u60e0\u5238</b></th><th>\u5238\u540e</th><th>\u6709 \u6548 \u671f</th><th>\u64cd\u4f5c</th></tr></thead><tr><td colspan='4'>\u6b63\u5728\u67e5\u8be2\u4f18\u60e0\u4fe1\u606f\uff0c\u8bf7\u7a0d\u5019...</td></tr></table></div>";$('#J_LinkBasket').parent().parent().prepend(init);$('.J_LinkAdd').parent().parent().prepend(init);if (reTaoBao.test(currentUrl)) {$('#wandhi_table').addClass('wandhi_tab_taobao');} else {$('#wandhi_table').addClass('wandhi_tab_tmall');}$.getJSON( h + api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";if (d.code) {d.data.forEach(e => {row+="<tr><td>" + e.quan_context + "</td><td>" + e.after_price + "</td><td>" + e.quan_time + "</td><td><b onclick=window.open(decodeURIComponent('" + e.quan_link + "')) style='cursor:pointer'>领取</b></td></tr>";});} else {row = "<tr><td colspan='4'>\u8fd9\u4e2a\u5546\u54c1\u6ca1\u6709\u8d85\u503c\u4f18\u60e0\u5238</td></tr>";}$("#wandhi_table tbody").append(row);});}
     var answer="-1";
-    function SXB(){var loading=layer.load(1, {shade: [0.8, '#393D49'], time:10* 1000});var h='https://www.yhxxc.com';var id=$("#Hidd_id").val();if(!id){Msg("\u6570\u636e\u5f02\u5e38\u8bf7\u8054\u7cfb\u4f5c\u8005");return;}var api='/api/tools/sxb/'+id;if(answer!="-1"){}$.getJSON(h + api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";if (d.code) {answer=d.data;showAnswer(answer);}else{Msg("\u672a\u53d1\u73b0\u7b54\u6848");layer.close(loading);}});}    
+    function SXB(){var loading=layer.load(1, {shade: [0.8, '#393D49'], time:10* 1000});var h='https://api.wandhi.com';var id=$("#Hidd_id").val();if(!id){Msg("\u6570\u636e\u5f02\u5e38\u8bf7\u8054\u7cfb\u4f5c\u8005");return;}var api='/api/tools/sxb/'+id;if(answer!="-1"){}$.getJSON(h + api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";if (d.code) {answer=d.data;showAnswer(answer);}else{Msg("\u672a\u53d1\u73b0\u7b54\u6848");layer.close(loading);}});}    
     function showAnswer(h){layer.closeAll();layer.open({type: 1,title: '\u7b54\u6848',area: ['400px', '300px'],shade: 0,offset: 'lb',maxmin: true,content: h});}
     function Msg(msg){layer.closeAll();layer.msg(msg, {icon: 5});}    
     function InitCurrentUrl(){currentUrl = window.location.href;}
