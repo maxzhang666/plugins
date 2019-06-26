@@ -13,10 +13,10 @@
 // @match        *://*.iqiyi.com/a_*
 // @match        *://*.iqiyi.com/adv*
 // @match        *://*.le.com/ptv/vplay/*
-// @match        *://v.qq.com/x/cover/*
-// @match        *://v.qq.com/x/page/*
-// @match        *://v.qq.com/play*
-// @match        *://v.qq.com/cover*
+// @match        *v.qq.com/x/cover/*
+// @match        *v.qq.com/x/page/*
+// @match        *v.qq.com/play*
+// @match        *v.qq.com/cover*
 // @match        *://*.tudou.com/listplay/*
 // @match        *://*.tudou.com/albumplay/*
 // @match        *://*.tudou.com/programs/view/*
