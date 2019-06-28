@@ -65,6 +65,7 @@
 // @require      https://greasyfork.org/scripts/373336-layer-wandhi/code/layer_wandhi.js?version=637587
 // @grant        GM_setClipboard
 // @run-at       document-end
+// @connect      shangxueba365.com
 // @grant        unsafeWindow
 // @grant        GM_xmlhttpRequest
 // @grant        GM_info
