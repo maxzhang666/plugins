@@ -1,64 +1,64 @@
 // ==UserScript==
 // @name         一键VIP视频解析、去广告(全网),一站式音乐搜索下载,上学吧答案显示,百度云离线跳转 2019-06-26 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
-// @version      3.3.7
+// @version      3.3.8
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询
 // @author       Wandhi
 // @icon         https://www.wandhi.com/favicon.ico
-// @match        *://m.youku.com/v*
-// @match        *://m.youku.com/a*
-// @match        *://v.youku.com/v_*
-// @match        *://*.iqiyi.com/v_*
-// @match        *://*.iqiyi.com/w_*
-// @match        *://*.iqiyi.com/a_*
-// @match        *://*.iqiyi.com/adv*
-// @match        *://*.le.com/ptv/vplay/*
-// @match        *v.qq.com/x/cover/*
-// @match        *v.qq.com/x/page/*
-// @match        *v.qq.com/play*
-// @match        *v.qq.com/cover*
-// @match        *://*.tudou.com/listplay/*
-// @match        *://*.tudou.com/albumplay/*
-// @match        *://*.tudou.com/programs/view/*
-// @match        *://*.tudou.com/v*
-// @match        *://*.mgtv.com/b/*
-// @match        *://film.sohu.com/album/*
-// @match        *://tv.sohu.com/v/*
-// @match        *://*.acfun.cn/v/*
-// @match        *://*.bilibili.com/video/*
-// @match        *://*.bilibili.com/anime/*
-// @match        *://*.bilibili.com/bangumi/play/*
-// @match        *://*.pptv.com/show/*
-// @match        *://*.baofeng.com/play/*
-// @match        *://*.wasu.cn/Play/show*
-// @match        *://v.yinyuetai.com/video/*
-// @match        *://v.yinyuetai.com/playlist/*
-// @match        *://*.wasu.cn/Play/show/*
-// @match        *://music.taihe.com/song*
-// @match        *://item.taobao.com/*
-// @match        *://detail.tmall.com/*
-// @match        *://detail.tmall.hk/*
-// @match        *://item.jd.com/*
-// @match        *://music.163.com/song*
-// @match        *://music.163.com/m/song*
-// @match        *://y.qq.com/*
-// @match        *://*.kugou.com/*
-// @match        *://*.kuwo.cn/*
-// @match        *://*.xiami.com/*
-// @match        *://music.taihe.com/*
-// @match        *://*.1ting.com/player*
-// @match        *://www.qingting.fm/*
-// @match        *://www.lizhi.fm/*
-// @match        *://music.migu.cn/*
-// @match        *://www.shangxueba.com/ask/*.html
-// @match        *://www.ximalaya.com/*
-// @match        *://www.shangxueba.com/ask/*.html
-// @match        *://pan.baidu.com/disk/home*
-// @match        *://yun.baidu.com/disk/home*
-// @match        *://pan.baidu.com/s/*
-// @match        *://yun.baidu.com/s/*
-// @match        *://pan.baidu.com/share/link*
-// @match        *://yun.baidu.com/share/link*
+// @include      *://m.youku.com/v*
+// @include      *://m.youku.com/a*
+// @include      *://v.youku.com/v_*
+// @include      *://*.iqiyi.com/v_*
+// @include      *://*.iqiyi.com/w_*
+// @include      *://*.iqiyi.com/a_*
+// @include      *://*.iqiyi.com/adv*
+// @include      *://*.le.com/ptv/vplay/*
+// @include      *v.qq.com/x/cover/*
+// @include      *v.qq.com/x/page/*
+// @include      *v.qq.com/play*
+// @include      *v.qq.com/cover*
+// @include      *://*.tudou.com/listplay/*
+// @include      *://*.tudou.com/albumplay/*
+// @include      *://*.tudou.com/programs/view/*
+// @include      *://*.tudou.com/v*
+// @include      *://*.mgtv.com/b/*
+// @include      *://film.sohu.com/album/*
+// @include      *://tv.sohu.com/v/*
+// @include      *://*.acfun.cn/v/*
+// @include      *://*.bilibili.com/video/*
+// @include      *://*.bilibili.com/anime/*
+// @include      *://*.bilibili.com/bangumi/play/*
+// @include      *://*.pptv.com/show/*
+// @include      *://*.baofeng.com/play/*
+// @include      *://*.wasu.cn/Play/show*
+// @include      *://v.yinyuetai.com/video/*
+// @include      *://v.yinyuetai.com/playlist/*
+// @include      *://*.wasu.cn/Play/show/*
+// @include      *://music.taihe.com/song*
+// @include      *://item.taobao.com/*
+// @include      *://detail.tmall.com/*
+// @include      *://detail.tmall.hk/*
+// @include      *://item.jd.com/*
+// @include      *://music.163.com/song*
+// @include      *://music.163.com/m/song*
+// @include      *://y.qq.com/*
+// @include      *://*.kugou.com/*
+// @include      *://*.kuwo.cn/*
+// @include      *://*.xiami.com/*
+// @include      *://music.taihe.com/*
+// @include      *://*.1ting.com/player*
+// @include      *://www.qingting.fm/*
+// @include      *://www.lizhi.fm/*
+// @include      *://music.migu.cn/*
+// @include      *://www.shangxueba.com/ask/*.html
+// @include      *://www.ximalaya.com/*
+// @include      *://www.shangxueba.com/ask/*.html
+// @include      *://pan.baidu.com/disk/home*
+// @include      *://yun.baidu.com/disk/home*
+// @include      *://pan.baidu.com/s/*
+// @include      *://yun.baidu.com/s/*
+// @include      *://pan.baidu.com/share/link*
+// @include      *://yun.baidu.com/share/link*
 // @require      https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js
 // @require      https://greasyfork.org/scripts/373336-layer-wandhi/code/layer_wandhi.js?version=637587
 // @grant        GM_setClipboard
@@ -211,7 +211,7 @@
     
     function TINT() {var h='https://api.wandhi.com';var bid = getPar('id');var api = '/api/tb/infos/' + bid;appendCss("//cdn.wandhi.com/style/extenstion/hui.style.css");var init = "<div id='wandhi_div'><table class='wandhi_tab' id='wandhi_table'><thead><tr><th><b onclick=window.open('https://link.zhihu.com/?target=http://www3.huizhek.com') style='cursor:pointer'>\u4f18\u60e0\u5238</b></th><th>\u5238\u540e</th><th>\u6709 \u6548 \u671f</th><th>\u64cd\u4f5c</th></tr></thead><tr><td colspan='4'>\u6b63\u5728\u67e5\u8be2\u4f18\u60e0\u4fe1\u606f\uff0c\u8bf7\u7a0d\u5019...</td></tr></table></div>";$('#J_LinkBasket').parent().parent().prepend(init);$('.J_LinkAdd').parent().parent().prepend(init);if (reTaoBao.test(currentUrl)) {$('#wandhi_table').addClass('wandhi_tab_taobao');} else {$('#wandhi_table').addClass('wandhi_tab_tmall');}$.getJSON(h+ api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";if (d.code) {d.data.forEach(e => {row+="<tr><td>" + e.quan_context + "</td><td>" + e.after_price + "</td><td>" + e.quan_time + "</td><td><b onclick=window.open(decodeURIComponent('" + e.quan_link + "')) style='cursor:pointer'>领取</b></td></tr>";});} else {row = "<tr><td colspan='4'>\u8fd9\u4e2a\u5546\u54c1\u6ca1\u6709\u8d85\u503c\u4f18\u60e0\u5238</td></tr>";}$("#wandhi_table tbody").append(row);});}
     var answer="-1";
-    function SXB(){var loading=layer.load(1, {shade: [0.8, '#393D49'], time:10* 1000});var h='https://api.wandhi.com';var id=$("#Hidd_id").val();if(!id){Msg("\u6570\u636e\u5f02\u5e38\u8bf7\u8054\u7cfb\u4f5c\u8005");return;}var api='/api/tools/sxb/'+id;if(answer!="-1"){}$.getJSON(h + api, function (d) {$("#wandhi_table tbody tr").remove();var row = "";if (d.code) {answer=d.data;showAnswer(answer);}else{Msg("\u672a\u53d1\u73b0\u7b54\u6848");layer.close(loading);}});}    
+    function SXB(){var loading=layer.load(1, {shade: [0.8, '#393D49'], time:10* 1000});var h='https://api.wandhi.com';var id=$("#Hidd_id").val();if(!id){Msg("\u6570\u636e\u5f02\u5e38\u8bf7\u8054\u7cfb\u4f5c\u8005");return;}var api='/api/tools/sxb/'+id;GM_xmlhttpRequest({headers:{ "Content-Type": "application/x-www-form-urlencoded"},method:"POST",url:"http://www.shangxueba365.com/post.php",responseType:"JSON",data:"docinfo="+encodeURIComponent("https://www.shangxueba.com/ask/"+id+".html"),onload:function(res){if(res.status==200&&res.response.status){showAnswer(res.response.msg);}else{Msg("\u672a\u53d1\u73b0\u7b54\u6848");}layer.close(loading);}});}    
     function showAnswer(h){layer.closeAll();layer.open({type: 1,title: '\u7b54\u6848',area: ['400px', '300px'],shade: 0,offset: 'lb',maxmin: true,content: h});}
     function Msg(msg){layer.closeAll();layer.msg(msg, {icon: 5});}
     function InitCurrentUrl(){currentUrl = window.location.href;}
@@ -242,4 +242,4 @@
         });
         init();
     }
-})();
+})();		
