@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告(全网),一站式音乐搜索下载,上学吧答案显示,百度云离线跳转 2019-06-28 更新，报错请及时反馈
+// @name         一键VIP视频解析、去广告(全网),一站式音乐搜索下载,上学吧答案显示,百度云离线跳转,淘宝京东优惠券 2019-06-28 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
 // @version      3.3.8
 // @description  在视频播放页悬浮VIP按钮，可在线播放vip视频；支持优酷vip，腾讯vip，爱奇艺vip，芒果vip，乐视vip等常用视频...一站式音乐搜索解决方案，网易云音乐，QQ音乐，酷狗音乐，酷我音乐，虾米音乐，百度音乐，蜻蜓FM，荔枝FM，喜马拉雅，优惠券查询
@@ -8,17 +8,17 @@
 // @include      *://m.youku.com/v*
 // @include      *://m.youku.com/a*
 // @include      *://v.youku.com/v_*
-// @include      *://*.iqiyi.com/v_*
-// @include      *://*.iqiyi.com/w_*
-// @include      *://*.iqiyi.com/a_*
-// @include      *://*.iqiyi.com/adv*
+// @include      http*://*.iqiyi.com/v_*
+// @include      http*://*.iqiyi.com/w_*
+// @include      http*://*.iqiyi.com/a_*
+// @include      http*://*.iqiyi.com/adv*
 // @include      *://*.le.com/ptv/vplay/*
-// @include      *v.qq.com/x/cover/*
-// @include      *v.qq.com/x/page/*
-// @include      *v.qq.com/play*
-// @include      *v.qq.com/cover*
-// @include      *://*.tudou.com/listplay/*
-// @include      *://*.tudou.com/albumplay/*
+// @include      http*v.qq.com/x/cover/*
+// @include      http*v.qq.com/x/page/*
+// @include      http*v.qq.com/play*
+// @include      http*v.qq.com/cover*
+// @include      http*://*.tudou.com/listplay/*
+// @include      http*://*.tudou.com/albumplay/*
 // @include      *://*.tudou.com/programs/view/*
 // @include      *://*.tudou.com/v*
 // @include      *://*.mgtv.com/b/*

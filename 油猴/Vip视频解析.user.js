@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         一键VIP视频解析、去广告(全网),一站式音乐搜索下载,上学吧答案显示,百度云离线跳转 2019-06-28 更新，报错请及时反馈
+// @name         一键VIP视频解析、去广告(全网),一站式音乐搜索下载,上学吧答案显示,百度云离线跳转,淘宝京东优惠券 2019-06-28 更新，报错请及时反馈
 // @namespace    http://www.wandhi.com/
 // @homepage     https://www.wandhi.com/post-647.html
 // @supportURL   https://www.wandhi.com/post-647.html
