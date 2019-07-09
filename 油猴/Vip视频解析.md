@@ -12,6 +12,8 @@
  最后，反馈时请给予“**Good**！”评价，并附上需要支持的网址，以及你所期望的需求！
 # vip视频解析工具
 
+##[**点我安装**](https://greasyfork.org/zh-CN/scripts/384538-%E4%B8%80%E9%94%AEvip%E8%A7%86%E9%A2%91%E8%A7%A3%E6%9E%90-%E5%8E%BB%E5%B9%BF%E5%91%8A-%E5%85%A8%E7%BD%91-%E4%B8%80%E7%AB%99%E5%BC%8F%E9%9F%B3%E4%B9%90%E6%90%9C%E7%B4%A2%E4%B8%8B%E8%BD%BD-%E4%B8%8A%E5%AD%A6%E5%90%A7%E7%AD%94%E6%A1%88%E6%98%BE%E7%A4%BA-%E7%99%BE%E5%BA%A6%E4%BA%91%E7%A6%BB%E7%BA%BF%E8%B7%B3%E8%BD%AC-%E6%B7%98%E5%AE%9D%E4%BA%AC%E4%B8%9C%E4%BC%98%E6%83%A0%E5%88%B8-2019-06-28-%E6%9B%B4%E6%96%B0-%E6%8A%A5%E9%94%99%E8%AF%B7%E5%8F%8A%E6%97%B6%E5%8F%8D%E9%A6%88)
+
 # 交流群：
 ## 一群[**340569308**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec) [**一键加群**](http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec)
 
